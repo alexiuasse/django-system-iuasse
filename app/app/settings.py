@@ -46,6 +46,11 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_tables2',
     'django_filters',
+
+    'config',
+    'financial',
+    'service',
+    'client',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
+    'django.middleware.locale.LocaleMiddleware',  # activate translation
     'simple_history.middleware.HistoryRequestMiddleware',
 ]
 
@@ -157,3 +162,4 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 DJANGO_TABLES2_TEMPLATE = "django_tables2/bootstrap4.html"
 
 DEFAULT_DECIMAL_PLACES = 2
+DEFAULT_MAX_DIGITS = 5
