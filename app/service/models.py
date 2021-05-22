@@ -68,7 +68,10 @@ class Contract(BaseModel):
                                      default=12,
                                      help_text=_("Expiration of the contract in months."))
     description = models.TextField(verbose_name=_("Description"))
-    attachment = models.FileField(verbose_name=_("Attachment"))
+    attachment = models.FileField(verbose_name=_("Attachment"),
+                                  upload_to="contracts",
+                                  blank=True,
+                                  null=True)
 
     def expiration_date(self):
         """
