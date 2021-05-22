@@ -7,8 +7,25 @@ class TypeOfPayment(models.Model):
         Model to set the type of payment allowed.
     """
 
-    name = models.CharField(verbose_name=_("Name"), max_length=128, blank=False, null=False)
-    active = models.BooleanField(verbose_name=_("Active"), default=True)
+    name = models.CharField(verbose_name=_("Name"),
+                            max_length=128,
+                            blank=False,
+                            null=False)
+    active = models.BooleanField(verbose_name=_("Active"),
+                                 default=True)
+
+
+class TypeOfService(models.Model):
+    """
+        Model to set the type of service.
+    """
+
+    name = models.CharField(verbose_name=_("Name"),
+                            max_length=128,
+                            blank=False,
+                            null=False)
+    active = models.BooleanField(verbose_name=_("Active"),
+                                 default=True)
 
 
 class PaymentStatus(models.Model):
@@ -16,8 +33,12 @@ class PaymentStatus(models.Model):
         Model to set the payment status.
     """
 
-    name = models.CharField(verbose_name=_("Name"), max_length=128, blank=False, null=False)
-    active = models.BooleanField(verbose_name=_("Active"), default=True)
+    name = models.CharField(verbose_name=_("Name"),
+                            max_length=128,
+                            blank=False,
+                            null=False)
+    active = models.BooleanField(verbose_name=_("Active"),
+                                 default=True)
 
 
 class CostCenter(models.Model):
@@ -28,7 +49,10 @@ class CostCenter(models.Model):
         or liability '(look for more information on accounting).
     """
 
-    name = models.CharField(verbose_name=_("Name"), max_length=128, blank=False, null=False)
+    name = models.CharField(verbose_name=_("Name"),
+                            max_length=128,
+                            blank=False,
+                            null=False)
     asset = models.BooleanField(verbose_name=_("Asset"))
     liability = models.BooleanField(verbose_name=_("Liability"))
 
@@ -38,4 +62,7 @@ class Occupation(models.Model):
         Model to set the Occupation, used to identify a client.
     """
 
-    name = models.CharField(verbose_name=_("Name"), max_length=128, blank=False, null=False)
+    name = models.CharField(verbose_name=_("Name"),
+                            max_length=128,
+                            blank=False,
+                            null=False)
