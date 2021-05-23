@@ -1,0 +1,22 @@
+{% load static %}
+{% load svg_icons %}
+{% comment %}
+
+Must develop a way to put live notifications without using websockets, maybe using messages?
+
+{% endcomment %}
+<div class="nav-item dropdown d-none d-md-flex me-3">
+    <a href="#" class="nav-link px-0" data-bs-toggle="dropdown" tabindex="-1" aria-label="Show notifications">
+        {% svg_icon "bell" "icon" %}
+        <span class="badge bg-red"></span>
+    </a>
+    <div class="dropdown-menu dropdown-menu-end dropdown-menu-card">
+        <div class="card">
+            <div class="card-body">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad amet consectetur
+                exercitationem fugiat in ipsa ipsum, natus odio quidem quod repudiandae sapiente. Amet
+                debitis et magni maxime necessitatibus ullam.
+            </div>
+        </div>
+    </div>
+</div>
