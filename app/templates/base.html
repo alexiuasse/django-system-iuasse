@@ -1,9 +1,9 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 
 <head>
-    {% load static %}
-    <meta name="google-site-verification" content="rGJ_dUMhnYcvve_7ssjugBZD-k8LtDQ1QqyrFrXMl30" />
+    <meta name="google-site-verification" content="PUT_DOMAIN_TOKEN_VERIFICATION_HERE" />
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport" />
     <meta content="ie=edge" http-equiv="X-UA-Compatible" />
@@ -21,7 +21,7 @@
     <link href="{% static 'favicon.ico' %}" rel="shortcut icon" type="image/x-icon" />
     <!-- CSS files -->
     <link href="{% static 'dist/css/tabler.min.css' %}" rel="stylesheet" />
-    <link href="{% static 'custom/css/custom-css.css' %}" rel="stylesheet" />
+    <link href="{%static 'dist/css/tabler-vendors.min.css' %}" rel="stylesheet" />
     {% block custom_css %}{% endblock %}
     <style>
         body {
@@ -34,23 +34,42 @@
 {% block body_html %}
 
 <body class="antialiased">
-    {% block navbar %}{% include "navbar_vertical.html" %}{% endblock %}
-    <div class="page">
-        <div class="content" id="content">
-            {% block content %} {% endblock %}
+    <div class="wrapper">
+        {% block navbar %}{% include "navbar_vertical.html" %}{% endblock %}
+        <div class="page-wrapper">
+            <div class="container-xl">
+                {% block page_header %}
+                <div class="page-header d-print-none">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            {% block page_pretitle %}{% endblock page_pretitle %}
+                            {% block page_title %}{% endblock page_title %}
+                        </div>
+                        {% block page_title_actions %}
+                        <div class="col-auto ms-auto d-print-none">
+                            <div class="btn-list">
+                                {% block page_title_actions_items %}{% endblock page_title_actions_items %}
+                            </div>
+                        </div>
+                        {% endblock page_title_actions %}
+                    </div>
+                </div>
+                {% endblock page_header %}
+            </div>
+            <div class="page-body">
+                <div class="container-xl">
+                    {% block page_body %} {% endblock page_body %}
+                </div>
+            </div>
             {% block footer %}{% include "footer.html" %}{% endblock %}
         </div>
     </div>
-    <!-- Libs JS -->
-    <script src="{% static 'dist/libs/jquery/dist/jquery.slim.min.js' %}"></script>
-    <script src="{% static 'dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'dist/libs/peity/jquery.peity.min.js' %}"></script>
     <!-- Tabler Core -->
     <script src="{% static 'dist/js/tabler.min.js' %}"></script>
-
     <script>
         document.body.style.display = "block";
     </script>
+    <!-- Libs JS -->
     {% block javascript %}{% endblock %}
 </body>
 

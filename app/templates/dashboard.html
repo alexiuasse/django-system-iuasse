@@ -1,15 +1,27 @@
 {% extends './base.html' %}
 {% load i18n %}
 {% load svg_icons %}
-{% block content %}
-<div class="container-xl">
-    <div class="page-header">
-        <div class="row align-items-center">
-            <div class="col-auto">
-                {% comment %} <div class="page-pretitle">{{config.pre_title}}</div> {% endcomment %}
-                <h2 class="page-title">{% svg_icon "dashboard" "icon-md" %} {% trans "Dashboard" %}</h2>
-            </div>
-        </div>
-    </div>
-</div>
-{% endblock content %}
+{% block page_title %}
+<h2 class="page-title">
+    <h2 class="page-title">{% svg_icon "dashboard" "icon" %} {% trans "Dashboard" %}</h2>
+</h2>
+{% endblock page_title %}
+{% block page_title_actions_items %}
+<span class="d-none d-sm-inline">
+    <a href="#" class="btn btn-white">
+        New view
+    </a>
+</span>
+<a href="#" class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-report">
+    {% svg_icon "plus" "icon" %}
+    Create new report
+</a>
+<a href="#" class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal" data-bs-target="#modal-report"
+    aria-label="Create new report">
+    {% svg_icon "plus" "icon" %}
+</a>
+{% endblock page_title_actions_items %}
+
+{% block page_body %}
+
+{% endblock page_body %}

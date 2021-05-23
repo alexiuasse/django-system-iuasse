@@ -156,7 +156,7 @@ LOGIN_REDIRECT_URL = '/dashboard/'
 
 # Custom settings
 
-VERSION = "1.0.0+0b"
+VERSION = "v1.0.0+0b"
 
 NAME_OF_ENTERPRISE = "Iuasse System"
 NAME_OF_ENTERPRISE_SHORT = "Iuasse System"
