@@ -1,0 +1,84 @@
+{% extends './base.html' %}
+{% load render_table from django_tables2 %}
+{% load bootstrap4 %}
+{% load i18n %}
+{% load svg_icons %}
+{% block content %}
+<div class="container-xl">
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col-auto">
+                <div class="page-pretitle">{{view.subtitle}}</div>
+                <h2 class="page-title">
+                    <a href="{{view.back_url}}">
+                        <span class="text-primary">{% svg_icon "arrow_back" "icon-md" %}</span>
+                    </a>
+                    {{view.title}}
+                    {% if view.new %}
+                    <a href="{{view.new}}">
+                        <span class="text-info">{% svg_icon "plus" "icon-md" %}</span>
+                    </a>
+                    {% endif %}
+                </h2>
+            </div>
+            <!-- Page title actions -->
+            <div class="col-auto ml-auto d-print-none">
+                {% block page_title_actions %}
+                {% if view.new %}
+                <a class="btn btn-sm btn-primary ml-3 d-none d-sm-inline-block" href="{{view.new}}">
+                    {% svg_icon "plus" "icon-md" %}
+                    {% trans "New" %}
+                </a>
+                {% endif %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="card">
+        <div class="card-body">
+            {% if filter %}
+            <h3 class="card-title">{% trans "Search" %}</h3>
+            <div class="card-subtitle">{% trans "You can filter the table here" %}</div>
+            <div class="table-container">
+                <form action="" class="form form-inline" method="get">
+                    <div class="row">
+                        {% for input in filter.form %}
+                        <div class="col-md-4">
+                            {% bootstrap_field input show_label=False %}
+                        </div>
+                        {% endfor %}
+                        <div class="col">
+                            <button class="btn btn-sm btn-primary submit mt-2">{% trans "Search" %}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            {% endif %}
+            <h3 class="card-title mt-3">{% trans "Table" %}</h3>
+            <div class="card-subtitle">
+                {% trans "You can change the order of the table by clicking on the header!" %}
+            </div>
+            <div class="table-responsive">
+                {% render_table table %}
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+{% block javascript %}
+<script type="text/javascript">
+    $(document).ready(function ($) {
+        $(".goto").click(function () {
+            window.location = $(this).data("href");
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends './base.html' %}
+{% load i18n %}
+{% load svg_icons %}
+{% block content %}
+<div class="container-xl">
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col-auto">
+                {% comment %} <div class="page-pretitle">{{config.pre_title}}</div> {% endcomment %}
+                <h2 class="page-title">{% svg_icon "dashboard" "icon-md" %} {% trans "Dashboard" %}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

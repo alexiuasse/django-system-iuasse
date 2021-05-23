@@ -22,7 +22,11 @@
         "html": [
             "htm",
             "html",
-            "django-html"
+            "django-html",
         ],
+    },
+    "[django-html]": {
+        "editor.formatOnSave": true,
+        "editor.wordWrapColumn": 120
     },
 }

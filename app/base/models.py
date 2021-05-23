@@ -25,7 +25,7 @@ class BaseModel(models.Model):
             Fields of the current model that is marked to get excluded from visualization.
         """
 
-        return ['id', 'history']
+        return ['id']
 
     def get_add_fields(self):
         """

@@ -46,12 +46,13 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_tables2',
     'django_filters',
-
+    'app',
     'config',
     'financial',
     'service',
     'client',
     'base',
+    'dashboard',
 ]
 
 MIDDLEWARE = [
@@ -79,6 +80,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'app.context_processors.general_template_context',
             ],
         },
     },
@@ -149,18 +151,24 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+LOGIN_URL = "/login/"
+LOGIN_REDIRECT_URL = '/dashboard/'
+
 # Custom settings
 
 VERSION = "1.0.0+0b"
 
 NAME_OF_ENTERPRISE = "Iuasse System"
 NAME_OF_ENTERPRISE_SHORT = "Iuasse System"
-BASE_SITE = "https://www.japachips.com"
-CONTACT_EMAIL = "japachips@gmail.com"
+FOOTER_LINK = "https://www.iuasse.com"
+FOOTER_TEXT = "Iuasse, Serviços Digitais"
+FOOTER_COPYRIGHT = "Copyright © 2021"
+CONTACT_EMAIL = "alexiuasse@gmail.com"
+
+
+DEFAULT_DECIMAL_PLACES = 2
+DEFAULT_MAX_DIGITS = 5
 
 # Django tables 2
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 DJANGO_TABLES2_TEMPLATE = "django_tables2/bootstrap4.html"
-
-DEFAULT_DECIMAL_PLACES = 2
-DEFAULT_MAX_DIGITS = 5

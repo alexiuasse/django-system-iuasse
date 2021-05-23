@@ -1,0 +1,57 @@
+{% extends './base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load svg_icons %}
+{% block content %}
+<div class="container-xl">
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col-auto">
+                <div class="page-pretitle">{{view.subtitle}}</div>
+                <h2 class="page-title">
+                    <a href="{% if object %} {{object.get_absolute_url}} {% else %} {{view.get_back_url}} {% endif %}">
+                        <span class="text-primary">{% svg_icon "arrow_back" "icon-md" %}</span>
+                    </a>
+                    {{view.title}}
+                    {% if object and object.get_delete_url %}
+                    <a href="{{ object.get_delete_url }}">
+                        <span class="text-danger">{% svg_icon "trash" "icon-md" %}</span>
+                    </a>
+                    {% endif %}
+                </h2>
+            </div>
+        </div>
+    </div>
+    <div class="row align-items-center">
+        {% block card %}
+        <div class="col-lg-6 ml-auto mr-auto">
+            {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{error}}
+            </div>
+            {% endif %}
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">{% trans "Form" %}</h3>
+                    <div class="card-subtitle">{% trans "All items with * are required!!" %}</div>
+                    <form action="" enctype="multipart/form-data" method="post">
+                        {% csrf_token %}
+                        {% crispy form %}
+                        <div class="form-row">
+                            <div class="pull-right mt-3">
+                                <a class="btn btn-danger mr-2"
+                                    href="{% if object %} {{object.get_absolute_url}} {% else %} {{view.get_back_url}} {% endif %}"
+                                    type="button">
+                                    {% trans "Cancel" %}
+                                </a>
+                                <button class="btn btn-primary" type="submit">{% trans "Save" %}</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+    </div>
+</div>
+{% endblock %}
