@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 'django_cleanup.apps.CleanupConfig',
     # 'corsheaders',
-    'simple_history',
     # 'bootstrap4',
     'crispy_forms',
     'django_tables2',
@@ -62,7 +61,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',  # activate translation
-    'simple_history.middleware.HistoryRequestMiddleware',
 ]
 
 ROOT_URLCONF = 'app.urls'
