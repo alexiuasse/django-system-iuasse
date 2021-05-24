@@ -47,11 +47,9 @@ INSTALLED_APPS = [
     'django_tables2',
     'django_filters',
     'app',
-    'config',
     'financial',
     'service',
     'client',
-    'base',
     'dashboard',
 ]
 
