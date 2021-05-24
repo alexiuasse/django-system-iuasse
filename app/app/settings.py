@@ -164,7 +164,7 @@ FOOTER_LINK = "https://www.iuasse.com"
 FOOTER_TEXT = "Iuasse, Serviços Digitais"
 FOOTER_COPYRIGHT = "Copyright © 2021"
 CONTACT_EMAIL = "alexiuasse@gmail.com"
-
+SOURCE_CODE_LINK = "https://github.com/alexiuasse/django-system-iuasse"
 
 DEFAULT_DECIMAL_PLACES = 2
 DEFAULT_MAX_DIGITS = 5
