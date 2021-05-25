@@ -22,8 +22,8 @@ If you wanna a fresh start run, after phase 4:
 6. Run ```python manage.py createsuperuser```
 7. Run ```python manage.py runserver 0.0.0.0:8000```
 
-### username: admin
-### password: admin123
+#### username: admin
+#### password: admin123
 
 ## What it provides
 
