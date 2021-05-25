@@ -8,11 +8,13 @@ from .views import index, logout_view
 
 urlpatterns = [
     path('', index, name='index'),
-    path('dashboard/', include("dashboard.urls")),
     path('login/', auth_views.LoginView.as_view(template_name='login.html'),
          name='login'),
     path('logout/', logout_view, name='logout'),
     path('admin/', admin.site.urls),
+
+    path('dashboard/', include("dashboard.urls")),
+    path('client/', include("client.urls")),
 ]
 
 # Handling errors, but only if debug is set to False and there is another

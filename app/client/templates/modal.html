@@ -1,0 +1,25 @@
+{% load crispy_forms_tags %}
+{% load i18n %}
+<div class="modal modal-blur fade" id="modal-client" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{% trans "New Client" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            {% crispy form %}
+            {% comment %}
+            <div class="modal-footer">
+                <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
+                    Cancel
+                </a>
+                <a href="#" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+                    <!-- SVG icon code -->
+                    Create new report
+                </a>
+            </div>
+            {% endcomment %}
+        </div>
+    </div>
+</div>

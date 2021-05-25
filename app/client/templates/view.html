@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% load svg_icons %}
+{% load render_table from django_tables2 %}
+
+{% block links %}
+<link href="{% static 'base/dist/libs/select2/css/select2.min.css' %}" rel="stylesheet" />
+<link href="{% static 'base/dist/libs/select2/css/select2-bootstrap.min.css' %}" rel="stylesheet" />
+{% endblock links %}
+
+
+{% block page_title_actions_items %}
+<a href="#" class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-client">
+    {% svg_icon "plus" "icon" %}
+    {% trans "Add new client" %}
+</a>
+<a href="#" class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal" data-bs-target="#modal-client"
+    aria-label="Create new report">
+    {% svg_icon "plus" "icon" %}
+</a>
+{% endblock page_title_actions_items %}
+
+{% block page_body %}
+<div class="table-responsive">
+    {% render_table table %}
+</div>
+{% include './modal.html' %}
+{% endblock page_body %}
+
+{% block javascript %}
+<script src="{% static 'base/dist/libs/jquery/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'base/dist/libs/select2/js/select2.full.min.js' %}"></script>
+<script>
+    var hasError = "{{error}}";
+</script>
+<script src="{% static 'client/js/client.js' %}"></script>
+{% endblock javascript %}

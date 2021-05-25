@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     # 'corsheaders',
     # 'bootstrap4',
     'crispy_forms',
+    'crispy_bootstrap5',
     'django_tables2',
     'django_filters',
     'app',
@@ -152,7 +153,7 @@ LOGIN_REDIRECT_URL = '/dashboard/'
 
 # Custom settings
 
-VERSION = "v1.0.0+0b"
+VERSION = "v1.0.0+0a"
 
 NAME_OF_ENTERPRISE = "Iuasse System"
 NAME_OF_ENTERPRISE_SHORT = "Iuasse System"
@@ -166,5 +167,8 @@ DEFAULT_DECIMAL_PLACES = 2
 DEFAULT_MAX_DIGITS = 5
 
 # Django tables 2
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
 DJANGO_TABLES2_TEMPLATE = "django_tables2/bootstrap4.html"
+
+# Django Crispy Forms
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"

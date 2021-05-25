@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
+{% load svg_icons %}
+
 <html lang="en">
 
 <head>
@@ -20,8 +22,8 @@
     <link href="{% static 'favicon.ico' %}" rel="icon" type="image/x-icon" />
     <link href="{% static 'favicon.ico' %}" rel="shortcut icon" type="image/x-icon" />
     <!-- CSS files -->
-    <link href="{% static 'dist/css/tabler.min.css' %}" rel="stylesheet" />
-    <link href="{%static 'dist/css/tabler-vendors.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'base/dist/css/tabler.min.css' %}" rel="stylesheet" />
+    <link href="{%static 'base/dist/css/tabler-vendors.min.css' %}" rel="stylesheet" />
     {% block custom_css %}{% endblock %}
     <style>
         body {
@@ -44,7 +46,11 @@
                     <div class="row align-items-center">
                         <div class="col">
                             {% block page_pretitle %}{% endblock page_pretitle %}
-                            {% block page_title %}{% endblock page_title %}
+                            {% block page_title %}
+                            <h2 class="page-title">
+                                <h2 class="page-title">{% svg_icon page_title_icon "icon" %} {{page_title}}</h2>
+                            </h2>
+                            {% endblock page_title %}
                         </div>
                         {% block page_title_actions %}
                         <div class="col-auto ms-auto d-print-none">
@@ -66,7 +72,9 @@
         </div>
     </div>
     <!-- Tabler Core -->
-    <script src="{% static 'dist/js/tabler.min.js' %}"></script>
+    <script src="{% static 'base/dist/js/tabler.min.js' %}"></script>
+    <!-- Bootstrap -->
+    <script src="{% static 'base/dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
     <script>
         document.body.style.display = "block";
     </script>
