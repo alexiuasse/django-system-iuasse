@@ -2,13 +2,14 @@
 {% load i18n %}
 {% load static %}
 {% load svg_icons %}
+{% load bootstrap5 %}
 {% load render_table from django_tables2 %}
+{% load crispy_forms_tags %}
 
 {% block links %}
 <link href="{% static 'base/dist/libs/select2/css/select2.min.css' %}" rel="stylesheet" />
 <link href="{% static 'base/dist/libs/select2/css/select2-bootstrap.min.css' %}" rel="stylesheet" />
 {% endblock links %}
-
 
 {% block page_title_actions_items %}
 <a href="#" class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-client">
@@ -22,8 +23,32 @@
 {% endblock page_title_actions_items %}
 
 {% block page_body %}
-<div class="table-responsive">
-    {% render_table table %}
+{% if filter %}
+<div class="card mb-3">
+    <div class="card-body">
+        <form action="" method="get" class="form form-inline" id="form-filter">
+            <div class="row">
+                {% for input in filter.form %}
+                <div class="form-group col-lg-3 col-md-6 col-sm-12 mb-0">
+                    {% bootstrap_field input %}
+                </div>
+                {% endfor %}
+                <div class="form-group col-lg-3 col-sm-12 mb-auto mt-auto">
+                    <button class="btn btn-primary btn-sm" type="submit" aria-label="Search">
+                        {% svg_icon "search" "icon" %} {% trans "Search" %}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endif %}
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            {% render_table table %}
+        </div>
+    </div>
 </div>
 {% include './modal.html' %}
 {% endblock page_body %}

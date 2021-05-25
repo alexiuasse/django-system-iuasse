@@ -11,6 +11,8 @@ from django_tables2 import RequestConfig
 from django.utils.translation import gettext as _
 from .forms import *
 from .tables import ClientTable
+from .filters import *
+
 
 _page_title = _("Client")
 _page_title_icon = "user"
@@ -25,6 +27,7 @@ def client_view_create(request):
     A 'view' to show Client's in a table and to create a new client using a form inside modal.
     """
     template_name = "./view.html"
+
     # copying the request.POST because it is imutable and the copy is not
     post = request.POST.copy()
     # change the field clientform-birthday if it matches, this occur
@@ -33,10 +36,22 @@ def client_view_create(request):
     if post and post['clientform-birthday'] == "__/__/____":
         post['clientform-birthday'] = None
     form = ClientForm(post or None)
+
+    # must remove "__/__/____" from birthday
+    get = request.GET.copy()
+    if get and get['birthday'] == "__/__/____":
+        get['birthday'] = None
+    # this is necessary since the phone can be empty and if so the bellow
+    # string will be sent as value, and then the filter will 'fail'
+    if get and get['phone'] == "(__) _ ____-____":
+        get['phone'] = ""
+    filter = ClientFilter(get or None, queryset=Client.objects.all())
+
     context = {
         'page_title': _page_title,
         'page_title_icon': _page_title_icon,
         'form': form,
+        'filter': filter
     }
     if request.method == "POST":
         if form.is_valid():
@@ -45,7 +60,7 @@ def client_view_create(request):
         else:
             context.update({'error': True})
     # pass a filter
-    table = ClientTable(Client.objects.all())
+    table = ClientTable(filter.qs)
     RequestConfig(request, paginate={
         "per_page": 20,
         "paginator_class": LazyPaginator

@@ -1,0 +1,254 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-25 10:38-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: client/models.py:11 client/models.py:60 financial/models.py:12
+#: financial/models.py:25 financial/models.py:41 service/models.py:14
+#: service/models.py:86
+msgid "Name"
+msgstr "Nome"
+
+#: client/models.py:62
+msgid "E-mail"
+msgstr "E-mail"
+
+#: client/models.py:65
+msgid "Address"
+msgstr "Endereço"
+
+#: client/models.py:69
+msgid "Phone"
+msgstr "Telefone"
+
+#: client/models.py:73
+msgid "Birthday"
+msgstr "Aniversário"
+
+#: client/models.py:80
+msgid "Occupation"
+msgstr "Ocupação"
+
+#: client/templates/modal.html:7
+msgid "New Client"
+msgstr "Novo Cliente"
+
+#: client/templates/view.html:16
+msgid "Add new client"
+msgstr "Add novo cliente"
+
+#: client/views.py:15 service/models.py:29
+msgid "Client"
+msgstr "Cliente"
+
+#: dashboard/templates/dashboard.html:6 dashboard/views.py:8
+#: templates/navbar_vertical.html:32
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: financial/models.py:16 financial/models.py:29 service/models.py:18
+msgid "Active"
+msgstr "Ativo"
+
+#: financial/models.py:45
+msgid "Asset"
+msgstr "Ativo"
+
+#: financial/models.py:46
+msgid "Liability"
+msgstr "Passivo"
+
+#: financial/models.py:54
+msgid "Total Value"
+msgstr "Valor Total"
+
+#: financial/models.py:56
+msgid "If the type of payment is parceled out, this is the real total!"
+msgstr "Se o tipo de pagamento é parcelado, esse é o valor real!"
+
+#: financial/models.py:60
+msgid "Type of Payment"
+msgstr "Tipo de Pagamento"
+
+#: financial/models.py:62
+msgid "Total Parcels"
+msgstr "Parcelas Totais"
+
+#: financial/models.py:67
+msgid "Cost Center"
+msgstr "Centro de Custo"
+
+#: service/models.py:33
+msgid "Type of Service"
+msgstr "Tipo de Serviço"
+
+#: service/models.py:37
+msgid "Domain"
+msgstr "Domínio"
+
+#: service/models.py:43 service/models.py:96
+msgid "Contract"
+msgstr "Contrato"
+
+#: service/models.py:88
+msgid "Link"
+msgstr "Link"
+
+#: service/models.py:89
+msgid "Acquisition Date"
+msgstr "Data de Aquisição"
+
+#: service/models.py:90
+msgid "Date that the domain was buyed."
+msgstr "Data que o domínio foi comprado."
+
+#: service/models.py:145
+msgid "Value"
+msgstr "Valor"
+
+#: service/models.py:148
+msgid "Start Date"
+msgstr "Data de Início"
+
+#: service/models.py:149
+msgid "Date that the contract was signed/agreed."
+msgstr "Data que o contrato foi assinado/acordado."
+
+#: service/models.py:150
+msgid "Expiration"
+msgstr "Expiração"
+
+#: service/models.py:152
+msgid "Expiration of the contract in months."
+msgstr "Expiração do contrato em meses."
+
+#: service/models.py:153
+msgid "Description"
+msgstr "Descrição"
+
+#: service/models.py:154
+msgid "Attachment"
+msgstr "Anexo"
+
+#: templates/confirm_delete.html:7
+msgid "Confirm Delete"
+msgstr "Confirmar Exclusão"
+
+#: templates/confirm_delete.html:18
+msgid "Delete "
+msgstr "Excluir"
+
+#: templates/confirm_delete.html:22
+msgid "All objects bellow will be excluded!!"
+msgstr "Todos os objetos abaixo serão excluidos!!"
+
+#: templates/confirm_delete.html:23
+msgid "Objects"
+msgstr "Objetos"
+
+#: templates/confirm_delete.html:29
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: templates/confirm_delete.html:30
+msgid "Confirm"
+msgstr "Confirmar"
+
+#: templates/error.html:15
+msgid "Oops ... something went wrong"
+msgstr "Oops ... algo deu errado"
+
+#: templates/error.html:20
+msgid "Go to Home"
+msgstr "Ir para Início"
+
+#: templates/footer.html:11
+msgid "Documentation"
+msgstr "Documentação"
+
+#: templates/footer.html:16
+msgid "License"
+msgstr "Licença"
+
+#: templates/footer.html:21 templates/header_buttons.html:7
+msgid "Source code"
+msgstr "Código Fonte"
+
+#: templates/footer.html:41
+msgid "All rights reserved"
+msgstr "Todos os direitos reservados"
+
+#: templates/header.html:23
+msgid "Search…"
+msgstr "Procurar..."
+
+#: templates/header.html:24
+msgid "Search in website"
+msgstr "Procurar no website"
+
+#: templates/login.html:20
+msgid "User or Password wrong"
+msgstr "Usuário ou Senha errado"
+
+#: templates/login.html:33
+msgid "Login"
+msgstr "Entrar"
+
+#: templates/navbar_vertical.html:42
+msgid "Clients"
+msgstr "Clientes"
+
+#: templates/navbar_vertical.html:52
+msgid "Contracts"
+msgstr "Contratos"
+
+#: templates/navbar_vertical.html:63
+msgid "Service"
+msgstr "Serviço"
+
+#: templates/navbar_vertical.html:68
+msgid "One Page"
+msgstr "Uma Página"
+
+#: templates/navbar_vertical.html:71
+msgid "Web System"
+msgstr "Sistema Web"
+
+#: templates/navbar_vertical.html:74
+msgid "Mobile"
+msgstr "Mobile"
+
+#: templates/navbar_vertical.html:77
+msgid "Domains"
+msgstr "Domínios"
+
+#: templates/navbar_vertical.html:88
+msgid "Financial"
+msgstr "Financeiro"
+
+#: templates/navbar_vertical.html:93
+msgid "List"
+msgstr "Lista"
+
+#: templates/navbar_vertical.html:96
+msgid "Charts"
+msgstr "Gráficos"
+
+#: templates/navbar_vertical.html:99
+msgid "Balance Sheet"
+msgstr "Balanço Patrimonial"

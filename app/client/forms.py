@@ -1,8 +1,6 @@
 from django import forms
-from crispy_forms.bootstrap import PrependedText, FieldWithButtons, StrictButton
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Div, HTML, Layout, Row, Field, Submit
-from django.urls.base import reverse
+from crispy_forms.layout import Div, Layout, Row, Field, Submit
 from .models import Client
 
 

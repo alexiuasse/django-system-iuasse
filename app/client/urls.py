@@ -6,5 +6,5 @@ from .views import *
 app_name = 'client'
 
 urlpatterns = [
-    path('view/', client_view_create, name='view'),
+    path('view/add/', client_view_create, name='view-add'),
 ]

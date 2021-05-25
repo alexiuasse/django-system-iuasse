@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 'django_cleanup.apps.CleanupConfig',
     # 'corsheaders',
-    # 'bootstrap4',
+    'bootstrap5',
     'crispy_forms',
     'crispy_bootstrap5',
     'django_tables2',
@@ -120,18 +120,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
 LANGUAGE_CODE = 'pt-br'
-
 LANGUAGES = [
     ('en', 'English'),
     ('pt-br', 'Brazilian Portuguese'),
 ]
+LOCALE_PATHS = (BASE_DIR / 'locale',)
 
 TIME_ZONE = 'America/Sao_Paulo'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
