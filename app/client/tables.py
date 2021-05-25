@@ -1,9 +1,13 @@
-from django_tables2 import tables, TemplateColumn, Column
+from django_tables2 import tables, TemplateColumn, Column, CheckBoxColumn
 
 from .models import *
 
 
 class ClientTable(tables.Table):
+
+    selection = CheckBoxColumn(accessor='pk',
+                               attrs={"th__input": {"onclick": "toggle(this)"}},
+                               orderable=False)
 
     class Meta:
         model = Client

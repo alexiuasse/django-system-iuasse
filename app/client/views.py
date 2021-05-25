@@ -1,17 +1,13 @@
-from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
-from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required, permission_required
 from django.views.decorators.http import require_http_methods
-from django.views.generic.edit import CreateView
-from django.views.generic.base import TemplateView
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-from django_tables2 import SingleTableMixin, LazyPaginator
+from django_tables2 import LazyPaginator
 from django_tables2 import RequestConfig
 from django.utils.translation import gettext as _
 from .forms import *
 from .tables import ClientTable
 from .filters import *
+from .models import Client
 
 
 _page_title = _("Client")
@@ -33,17 +29,27 @@ def client_view_create(request):
     # change the field clientform-birthday if it matches, this occur
     # because for some reason the data-mask is sending the value as bellow
     # and then the validation form fails because it's not a date field.
-    if post and post['clientform-birthday'] == "__/__/____":
+    if post and 'clientform-birthday' in post and post['clientform-birthday'] == "__/__/____":
         post['clientform-birthday'] = None
-    form = ClientForm(post or None)
+    # check if the id of client is set, if true than pass a instance of client
+    # to form, as it is an update
+    if post and 'clientform-id' in post and post['clientform-id'] != "0":
+        form = ClientForm(
+            post,
+            instance=Client.objects.get(pk=post['clientform-id']), prefix="clientform"
+        )
+    else:
+        # must set the prefix to get the right fields, this is necessary because
+        # this view can return multiple forms
+        form = ClientForm(post or None, prefix="clientform")
 
     # must remove "__/__/____" from birthday
     get = request.GET.copy()
-    if get and get['birthday'] == "__/__/____":
+    if get and 'birthday' in get and get['birthday'] == "__/__/____":
         get['birthday'] = None
     # this is necessary since the phone can be empty and if so the bellow
     # string will be sent as value, and then the filter will 'fail'
-    if get and get['phone'] == "(__) _ ____-____":
+    if get and 'phone' in get and get['phone'] == "(__) _ ____-____":
         get['phone'] = ""
     filter = ClientFilter(get or None, queryset=Client.objects.all())
 
@@ -54,11 +60,27 @@ def client_view_create(request):
         'filter': filter
     }
     if request.method == "POST":
-        if form.is_valid():
-            form.save()
-            context.update({'form': ClientForm()})
+        pks = request.POST.getlist("selection")  # handle selection from table
+        action = request.POST.get('action_options')
+        if len(pks) > 0:
+            selected_objects = Client.objects.filter(pk__in=pks)
+            if action == 'delete':
+                selected_objects.delete()
+                context.update({'form': ClientForm(None)})
+            elif action == 'edit':
+                # if it is a edit so the form must contain the client info
+                context.update({
+                    'form': ClientForm(instance=Client.objects.get(pk=pks[0]), prefix="clientform", initial={'id': pks[0]}),
+                    'showModal': True
+                })
+        elif 'actions' not in post:
+            if form.is_valid():
+                form.save()
+                context.update({'form': ClientForm(None)})
+            else:
+                context.update({'showModal': True})
         else:
-            context.update({'error': True})
+            context.update({'form': ClientForm(None)})
     # pass a filter
     table = ClientTable(filter.qs)
     RequestConfig(request, paginate={
@@ -67,27 +89,3 @@ def client_view_create(request):
     }).configure(table)
     context.update({'table': table})
     return render(request, template_name=template_name, context=context)
-
-# class ClientView(LoginRequiredMixin, PermissionRequiredMixin, SingleTableMixin, TemplateView):
-#     model = Client
-#     table_class = ClientTable
-#     table_data = Client.objects.all()
-#     paginator_class = LazyPaginator
-#     template_name = "./view.html"
-#     permission_required = 'client.view_client'
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['page_title'] = _page_title
-#         context['page_title_icon'] = _page_title_icon
-#         context['form'] = ClientForm()
-#         return context
-
-# class ClientCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
-#     """A view to create a new client."""
-#     model = Client
-#     form_class = ClientForm
-#     template_name = "./form.html"
-#     permission_required = "client.add_client"
-#     page_title = _page_title
-#     page_title_icon = _page_title_icon
