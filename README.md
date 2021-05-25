@@ -6,21 +6,21 @@ Django Iuasse System is a system that aims to run a small business.
 
 To run this project you need to do:
 
-1. Install python 3.8 (that is the version that i use, i think you can use other version to)
-2. Make a virtual environment
-3. Run pip install -r requirements.txt (this will install all libs that it needs to run)
+1. Install **python 3.8** (that is the version that i use, i think you can use other version to)
+2. Make a virtual environment (what i do is **virtualenv venv**)
+3. Run ```pip install -r requirements.txt```(this will install all libs that it needs to run)
 4. Open a terminal/cmd into app folder (where the manage.py is)
-5. Run python manage.py runserver 0.0.0.0:8000
+5. Run ```python manage.py runserver 0.0.0.0:8000```
 
 If you wanna a fresh start run, after phase 4:
 
-1. find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
-2. find . -path "*/migrations/*.pyc"  -delete
+1. ```find . -path "*/migrations/*.py" -not -name "__init__.py" -delete```
+2. ```find . -path "*/migrations/*.pyc"  -delete```
 3. Delete the db.sqlite3
-4. Run python manage.py makemigrations
-5. Run python manage.py migrate
-6. Run python manage.py createsuperuser
-7. Run python manage.py runserver 0.0.0.0:8000
+4. Run python ```manage.py makemigrations```
+5. Run python ```manage.py migrate```
+6. Run python ```manage.py createsuperuser```
+7. Run python ```manage.py runserver 0.0.0.0:8000```
 
 ### username: admin
 ### password: admin123
