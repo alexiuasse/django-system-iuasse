@@ -11,6 +11,8 @@ class ClientTable(tables.Table):
 
     class Meta:
         model = Client
-        attrs = {'class': 'table table-striped table-hover table-vcenter card-table'}
+        attrs = {
+            'class': 'table table-striped table-hover table-vcenter card-table'
+        }
         row_attrs = {'class': 'text-muted'}
         per_page = 20

@@ -50,17 +50,19 @@
             <input type="hidden" name="actions" value="actions">
             <div class="d-flex justify-content-end mb-3">
                 <div class="w-auto">
-                    <div class="input-group input-group-flat">
+                    <div class="input-group mb-2">
                         <select name="action_options" class="form-control" id="action_options">
-                            <option value="delete">{% trans "Delete" %}</option>
-                            <option value="edit">{% trans "Edit" %}</option>
+                            <option value="delete" {% if actions_options == "delete" %} selected {% endif%}>
+                                {% trans "Delete" %}
+                            </option>
+                            <option value="edit" {% if actions_options == "edit" %} selected {% endif%}>
+                                {% trans "Edit" %}
+                            </option>
                         </select>
-                        <span class="input-group-text">
-                            <a href="javascript:{}" class="link-secondary" title="" onclick="return onClickConfirm();"
-                                data-bs-toggle="tooltip" data-bs-original-title="{% trans "Confirm" %}">
-                                {% svg_icon "check" "icon text-success" %}
-                            </a>
-                        </span>
+                        <a href="javascript:{}" class="btn" title="" onclick="return onClickConfirm();"
+                            data-bs-toggle="tooltip" data-bs-original-title="{% trans "Confirm" %}">
+                            {% svg_icon "check" "icon text-success" %}
+                        </a>
                     </div>
                 </div>
             </div>

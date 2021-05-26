@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-25 10:38-0300\n"
+"POT-Creation-Date: 2021-05-25 21:11-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,15 +44,65 @@ msgstr "Aniversário"
 msgid "Occupation"
 msgstr "Ocupação"
 
-#: client/templates/modal.html:7
+#: client/templates/modal.html:9
 msgid "New Client"
 msgstr "Novo Cliente"
 
-#: client/templates/view.html:16
+#: client/templates/modal.html:16
+msgid "Close"
+msgstr "Fechar"
+
+#: client/templates/modal.html:17
+msgid "Save"
+msgstr "Salvar"
+
+#: client/templates/modal.html:31
+msgid "Are you sure?"
+msgstr "Você tem certeza?"
+
+#: client/templates/modal.html:33
+msgid "Do you really want to remove"
+msgstr "Você realmente quer excluir"
+
+#: client/templates/modal.html:35
+msgid "client(s)? What you've done cannot be undone."
+msgstr "cliente(s)? Essa operação não pode ser desfeita."
+
+#: client/templates/modal.html:42 templates/confirm_delete.html:29
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: client/templates/modal.html:47 client/templates/view.html:55
+#, fuzzy
+#| msgid "Delete "
+msgid "Delete"
+msgstr "Excluir"
+
+#: client/templates/modal.html:49
+#, fuzzy
+#| msgid "Clients"
+msgid "client(s)"
+msgstr "Clientes"
+
+#: client/templates/view.html:17
 msgid "Add new client"
 msgstr "Add novo cliente"
 
-#: client/views.py:15 service/models.py:29
+#: client/templates/view.html:38
+#, fuzzy
+#| msgid "Search…"
+msgid "Search"
+msgstr "Procurar..."
+
+#: client/templates/view.html:56
+msgid "Edit"
+msgstr "Editar"
+
+#: client/templates/view.html:60 templates/confirm_delete.html:30
+msgid "Confirm"
+msgstr "Confirmar"
+
+#: client/views.py:13 service/models.py:29
 msgid "Client"
 msgstr "Cliente"
 
@@ -161,14 +211,6 @@ msgstr "Todos os objetos abaixo serão excluidos!!"
 msgid "Objects"
 msgstr "Objetos"
 
-#: templates/confirm_delete.html:29
-msgid "Cancel"
-msgstr "Cancelar"
-
-#: templates/confirm_delete.html:30
-msgid "Confirm"
-msgstr "Confirmar"
-
 #: templates/error.html:15
 msgid "Oops ... something went wrong"
 msgstr "Oops ... algo deu errado"
@@ -252,3 +294,7 @@ msgstr "Gráficos"
 #: templates/navbar_vertical.html:99
 msgid "Balance Sheet"
 msgstr "Balanço Patrimonial"
+
+#: templates/navbar_vertical.html:109
+msgid "Admin"
+msgstr "Admin"

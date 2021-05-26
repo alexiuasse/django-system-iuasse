@@ -73,6 +73,7 @@ def client_view_create(request):
                     'form': ClientForm(instance=Client.objects.get(pk=pks[0]), prefix="clientform", initial={'id': pks[0]}),
                     'showModal': True
                 })
+            context.update({'actions_options': action})
         elif 'actions' not in post:
             if form.is_valid():
                 form.save()

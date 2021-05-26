@@ -21,7 +21,8 @@ $(document).ready(function () {
 });
 
 function onClickConfirm() {
-    if ($("#action_options option:selected").text() == "Edit") {
+    console.log('sanity check');
+    if ($("#action_options option:selected").val() == "edit") {
         if ($('input[name="selection"]:checked').length > 0) {
             $('#form-table').submit();
         }
