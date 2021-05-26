@@ -43,7 +43,7 @@
                             </a>
                         </div>
                         <div class="col"><a href="#" class="btn btn-danger w-100" data-bs-dismiss="modal"
-                                onclick="$('#form-table').submit();return false;">
+                                onclick="$('#form-table').trigger('submit');return false;">
                                 {% trans "Delete" %}
                                 &nbsp;<span class="toDeleteCount"></span>&nbsp;
                                 {% trans "client(s)" %}

@@ -46,11 +46,7 @@
                     <div class="row align-items-center">
                         <div class="col">
                             {% block page_pretitle %}{% endblock page_pretitle %}
-                            {% block page_title %}
-                            <h2 class="page-title">
-                                <h2 class="page-title">{% svg_icon page_title_icon "icon" %} {{page_title}}</h2>
-                            </h2>
-                            {% endblock page_title %}
+                            {% block page_title %}{% endblock page_title %}
                         </div>
                         {% block page_title_actions %}
                         <div class="col-auto ms-auto d-print-none">
@@ -73,8 +69,6 @@
     </div>
     <!-- Tabler Core -->
     <script src="{% static 'base/dist/js/tabler.min.js' %}"></script>
-    <!-- Bootstrap -->
-    <script src="{% static 'base/dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
     <script>
         document.body.style.display = "block";
     </script>

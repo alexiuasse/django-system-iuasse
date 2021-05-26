@@ -1,7 +1,9 @@
 from django import forms
 from django.conf import settings
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Div, Layout, Row, Field, Submit
+from crispy_forms.layout import Div, Layout, Row, Field
+import re
+
 from .models import Client
 
 
@@ -40,6 +42,7 @@ class ClientForm(forms.ModelForm):
         data = self.cleaned_data['phone']
         if data == "(__) _ ____-____":
             data = ""
+        # int("".join(filter(str.isdigit, data)))
         return data
 
     class Meta:

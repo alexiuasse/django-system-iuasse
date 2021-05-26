@@ -4,6 +4,7 @@
 {% load svg_icons %}
 {% load bootstrap5 %}
 {% load render_table from django_tables2 %}
+{% load export_url from django_tables2 %}
 {% load crispy_forms_tags %}
 
 {% block links %}
@@ -11,10 +12,18 @@
 <link href="{% static 'base/dist/libs/select2/css/select2-bootstrap.min.css' %}" rel="stylesheet" />
 {% endblock links %}
 
+{% block page_title %}
+<h2 class="page-title">
+    <h2 class="page-title">
+        {% svg_icon page_title_icon "icon" %} {{page_title}}
+    </h2>
+</h2>
+{% endblock page_title %}
+
 {% block page_title_actions_items %}
 <a href="#" class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-client">
     {% svg_icon "plus" "icon" %}
-    {% trans "Add new client" %}
+    {% trans "New Client" %}
 </a>
 <a href="#" class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal" data-bs-target="#modal-client"
     aria-label="Create new report">
@@ -28,6 +37,7 @@
     <div class="card-body">
         <form action="" method="get" class="form form-inline" id="form-filter">
             <div class="row">
+                <input type="hidden" name="reset-filter" , id="id_reset-filter" value="false">
                 {% for input in filter.form %}
                 <div class="form-group col-lg-3 col-md-6 col-sm-12 mb-0">
                     {% bootstrap_field input %}
@@ -37,6 +47,11 @@
                     <button class="btn btn-primary btn-sm" type="submit" aria-label="Search">
                         {% svg_icon "search" "icon" %} {% trans "Search" %}
                     </button>
+                    <a href="#" class="btn btn-primary btn-sm"
+                        onclick="$('#id_reset-filter').val('true'); $('#form-filter').trigger('submit');"
+                        aria-label="Clear">
+                        {% svg_icon "clear-all" "icon" %} {% trans "Clear" %}
+                    </a>
                 </div>
             </div>
         </form>
@@ -47,22 +62,45 @@
     <div class="card-body">
         <form method="post" class="form form-inline" id='form-table'>
             {% csrf_token %}
-            <input type="hidden" name="actions" value="actions">
-            <div class="d-flex justify-content-end mb-3">
-                <div class="w-auto">
-                    <div class="input-group mb-2">
-                        <select name="action_options" class="form-control" id="action_options">
-                            <option value="delete" {% if actions_options == "delete" %} selected {% endif%}>
+            <input type="hidden" name="action" value="">
+            <div class="row mb-3">
+                <div class="d-flex justify-content-start col-6">
+                    <div class="w-auto">
+                        <div class="input-group">
+                            <a href="javascript:{}" class="btn btn-sm btn-icon btn-success">
+                                {% svg_icon "download" "icon icon" %}
+                            </a>
+                            {% for format in export_formats %}
+                            <a href="{% export_url format %}" class="btn btn-sm btn-icon btn-success">
+                                .{{format}}
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end col-6">
+                    <div class="w-auto">
+                        <div class="input-group">
+                            <input type="hidden" name="actions" value="" id="actions">
+                            <a href="javascript:{}" class="btn btn-sm btn-danger d-none d-sm-inline-block"
+                                onclick="return onClickConfirm('delete');">
+                                {% svg_icon "delete" "icon" %}
                                 {% trans "Delete" %}
-                            </option>
-                            <option value="edit" {% if actions_options == "edit" %} selected {% endif%}>
+                            </a>
+                            <a href="javascript:{}" class="btn btn-sm btn-danger d-sm-none btn-icon"
+                                onclick="return onClickConfirm('delete');">
+                                {% svg_icon "delete" "icon icon-sm" %}
+                            </a>
+                            <a href="javascript:{}" class="btn btn-sm btn-primary d-none d-sm-inline-block"
+                                onclick="return onClickConfirm('edit');">
+                                {% svg_icon "edit" "icon" %}
                                 {% trans "Edit" %}
-                            </option>
-                        </select>
-                        <a href="javascript:{}" class="btn" title="" onclick="return onClickConfirm();"
-                            data-bs-toggle="tooltip" data-bs-original-title="{% trans "Confirm" %}">
-                            {% svg_icon "check" "icon text-success" %}
-                        </a>
+                            </a>
+                            <a href="javascript:{}" class="btn btn-sm btn-primary d-sm-none btn-icon"
+                                onclick="return onClickConfirm('edit');">
+                                {% svg_icon "edit" "icon icon-sm" %}
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -76,10 +114,12 @@
 {% endblock page_body %}
 
 {% block javascript %}
+{% comment %} <script src="{% static 'base/dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+{% endcomment %}
 <script src="{% static 'base/dist/libs/jquery/jquery-3.6.0.min.js' %}"></script>
 <script src="{% static 'base/dist/libs/select2/js/select2.full.min.js' %}"></script>
 <script>
-    var showModal = "{{showModal}}";
+    var showModal = "{{show_modal}}";
 </script>
 <script src="{% static 'client/js/client.js' %}"></script>
 {% endblock javascript %}

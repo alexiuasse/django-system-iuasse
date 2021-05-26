@@ -13,13 +13,17 @@ class ClientFilter(django_filters.FilterSet):
     address is a TextField and has an autosize field with overflow as break-word. 
     """
 
-    phone = django_filters.CharFilter(widget=forms.TextInput(
-        attrs={"data-mask": "(00) 0 0000-0000", "data-mask-visible": True, "placeholder": "(00) 0 0000-0000", "autocomplete": "off"}))
-    birthday = django_filters.DateFilter(widget=forms.TextInput(
-        attrs={"data-mask": "00/00/0000", "data-mask-visible": True, "placeholder": "00/00/0000", "autocomplete": "off"}))
-    address = django_filters.CharFilter(widget=forms.Textarea(
-        attrs={"rows": 1, "data-bs-toggle": "autosize", "style": "overflow: hidden; overflow-wrap: break-word; resize: none;"}))
+    name = django_filters.CharFilter(lookup_expr='icontains')
+    email = django_filters.CharFilter(lookup_expr='icontains')
+    # phone = django_filters.CharFilter(lookup_expr='icontains',
+    #                                   widget=forms.TextInput(
+    #                                       attrs={"data-mask": "(00) 0 0000-0000", "data-mask-visible": True, "placeholder": "(00) 0 0000-0000", "autocomplete": "off"}))
+    # birthday = django_filters.DateFilter(widget=forms.TextInput(
+    #     attrs={"data-mask": "00/00/0000", "data-mask-visible": True, "placeholder": "00/00/0000", "autocomplete": "off"}))
+    address = django_filters.CharFilter(lookup_expr='icontains',
+                                        widget=forms.Textarea(
+                                            attrs={"rows": 1, "data-bs-toggle": "autosize", "style": "overflow: hidden; overflow-wrap: break-word; resize: none;"}))
 
     class Meta:
         model = Client
-        fields = '__all__'
+        fields = ['name', 'email', 'address', 'occupation']

@@ -1,4 +1,4 @@
-$(document).ready(function () {
+jQuery(function () {
     // Calling select2 on the select input
     $('#id_clientform-occupation').select2({
         // need to put this because is inside a modal
@@ -13,29 +13,28 @@ $(document).ready(function () {
     });
 
     // if creating a new client has some error, call again the modal with form
-    if (showModal) {
-        var myModal = new bootstrap.Modal(document.getElementById('modal-client'));
-        myModal.show();
+    if (showModal == "True") {
+        jQuery('#modal-client').modal('show')
     }
 
 });
 
-function onClickConfirm() {
-    console.log('sanity check');
-    if ($("#action_options option:selected").val() == "edit") {
+function onClickConfirm(action) {
+    console.log(action);
+    $("#actions").val(action);
+    if (action == "edit") {
         if ($('input[name="selection"]:checked').length > 0) {
-            $('#form-table').submit();
+            $('#form-table').trigger('submit');
         }
-    } else {
+    } else if (action == "delete") {
         deleteConfirm();
     }
 }
 
 function deleteConfirm() {
     if ($('input[name="selection"]:checked').length > 0) {
-        var modalDelete = new bootstrap.Modal(document.getElementById('modal-delete'));
         howManyChecked();
-        modalDelete.show();
+        jQuery('#modal-delete').modal('show')
     }
 }
 
