@@ -75,7 +75,8 @@ class ClientView(LoginRequiredMixin, PermissionRequiredMixin, View):
         export_format = request.GET.get("_export", None)
         if TableExport.is_valid_format(export_format):
             exporter = TableExport(export_format, self.table_class)
-            return exporter.response("table.{}".format(export_format))
+            table_name = _("clients_table")
+            return exporter.response("{}.{}".format(table_name, export_format))
 
         return render(request, self.template_name, self.get_context_data())
 

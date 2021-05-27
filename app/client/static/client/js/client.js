@@ -20,22 +20,20 @@ jQuery(function () {
 });
 
 function onClickConfirm(action) {
-    console.log(action);
     $("#actions").val(action);
-    if (action == "edit") {
-        if ($('input[name="selection"]:checked').length > 0) {
+    if ($('input[name="selection"]:checked').length > 0) {
+        if (action == "edit") {
             $('#form-table').trigger('submit');
         }
-    } else if (action == "delete") {
-        deleteConfirm();
+        if (action == "delete") {
+            deleteConfirm();
+        }
     }
 }
 
 function deleteConfirm() {
-    if ($('input[name="selection"]:checked').length > 0) {
-        howManyChecked();
-        jQuery('#modal-delete').modal('show')
-    }
+    howManyChecked();
+    jQuery('#modal-delete').modal('show');
 }
 
 function toggle(source) {

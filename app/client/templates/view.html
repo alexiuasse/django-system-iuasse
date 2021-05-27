@@ -64,39 +64,37 @@
             {% csrf_token %}
             <input type="hidden" name="action" value="">
             <div class="row mb-3">
-                <div class="d-flex justify-content-start col-6">
+                <div class="d-flex justify-content-start col-8">
                     <div class="w-auto">
                         <div class="input-group">
-                            <a href="javascript:{}" class="btn btn-sm btn-icon btn-success">
-                                {% svg_icon "download" "icon icon" %}
-                            </a>
                             {% for format in export_formats %}
-                            <a href="{% export_url format %}" class="btn btn-sm btn-icon btn-success">
-                                .{{format}}
+                            <a href="{% export_url format %}" class="btn btn-success">
+                                {% svg_icon "download" "icon icon" %} .{{format}}
                             </a>
                             {% endfor %}
                         </div>
                     </div>
                 </div>
-                <div class="d-flex justify-content-end col-6">
+                <div class="d-flex justify-content-end col">
                     <div class="w-auto">
                         <div class="input-group">
                             <input type="hidden" name="actions" value="" id="actions">
-                            <a href="javascript:{}" class="btn btn-sm btn-danger d-none d-sm-inline-block"
+                            <a href="javascript:{}" class="btn btn-danger d-none d-md-inline-block"
                                 onclick="return onClickConfirm('delete');">
                                 {% svg_icon "delete" "icon" %}
                                 {% trans "Delete" %}
                             </a>
-                            <a href="javascript:{}" class="btn btn-sm btn-danger d-sm-none btn-icon"
-                                onclick="return onClickConfirm('delete');">
-                                {% svg_icon "delete" "icon icon-sm" %}
-                            </a>
-                            <a href="javascript:{}" class="btn btn-sm btn-primary d-none d-sm-inline-block"
+                            <a href="javascript:{}" class="btn btn-primary d-none d-md-inline-block"
                                 onclick="return onClickConfirm('edit');">
                                 {% svg_icon "edit" "icon" %}
                                 {% trans "Edit" %}
                             </a>
-                            <a href="javascript:{}" class="btn btn-sm btn-primary d-sm-none btn-icon"
+                            {% comment %} small screens {% endcomment %}
+                            <a href="javascript:{}" class="btn btn-danger d-md-none btn-icon"
+                                onclick="return onClickConfirm('delete');">
+                                {% svg_icon "delete" "icon icon-sm" %}
+                            </a>
+                            <a href="javascript:{}" class="btn btn-primary d-md-none btn-icon"
                                 onclick="return onClickConfirm('edit');">
                                 {% svg_icon "edit" "icon icon-sm" %}
                             </a>
