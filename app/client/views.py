@@ -95,8 +95,10 @@ class ClientView(LoginRequiredMixin, PermissionRequiredMixin, View):
                 if action == 'delete':
                     selected_objects.delete()
                     self.form_class = self.form_class(None)
-                    messages.success(request,
-                                     _("{} Clients deleted successfully").format(len(pks)))
+                    messages.success(
+                        request,
+                        _("{} Client(s) deleted successfully").format(len(pks))
+                    )
                 elif action == 'edit':
                     # if it is a edit so the form must contain the client info
                     self.form_class = self.form_class(
@@ -145,10 +147,14 @@ class ClientView(LoginRequiredMixin, PermissionRequiredMixin, View):
             _object = self.form_class.save()
             self.form_class = ClientForm(None)
             if post and 'clientform-id' in post and post['clientform-id'] != "0":
-                messages.success(request, _(
-                    "{} was edited successfully").format(_object.name))
+                messages.success(
+                    request,
+                    _("{} was edited successfully").format(_object.name)
+                )
             else:
-                messages.success(request, _(
-                    "{} was created successfully").format(_object.name))
+                messages.success(
+                    request,
+                    _("{} was created successfully").format(_object.name)
+                )
         else:
             self.show_modal = True

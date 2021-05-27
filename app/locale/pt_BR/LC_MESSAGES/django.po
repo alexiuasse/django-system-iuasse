@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-25 21:11-0300\n"
+"POT-Creation-Date: 2021-05-27 19:30-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,7 +44,7 @@ msgstr "Aniversário"
 msgid "Occupation"
 msgstr "Ocupação"
 
-#: client/templates/modal.html:9
+#: client/templates/modal.html:9 client/templates/view.html:26
 msgid "New Client"
 msgstr "Novo Cliente"
 
@@ -72,7 +72,7 @@ msgstr "cliente(s)? Essa operação não pode ser desfeita."
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: client/templates/modal.html:47 client/templates/view.html:55
+#: client/templates/modal.html:47 client/templates/view.html:85
 #, fuzzy
 #| msgid "Delete "
 msgid "Delete"
@@ -84,27 +84,43 @@ msgstr "Excluir"
 msgid "client(s)"
 msgstr "Clientes"
 
-#: client/templates/view.html:17
-msgid "Add new client"
-msgstr "Add novo cliente"
-
-#: client/templates/view.html:38
+#: client/templates/view.html:48
 #, fuzzy
 #| msgid "Search…"
 msgid "Search"
 msgstr "Procurar..."
 
-#: client/templates/view.html:56
+#: client/templates/view.html:53
+msgid "Clear"
+msgstr "Limpar"
+
+#: client/templates/view.html:90
 msgid "Edit"
 msgstr "Editar"
 
-#: client/templates/view.html:60 templates/confirm_delete.html:30
-msgid "Confirm"
-msgstr "Confirmar"
-
-#: client/views.py:13 service/models.py:29
+#: client/views.py:25 service/models.py:29
 msgid "Client"
 msgstr "Cliente"
+
+#: client/views.py:77
+#, fuzzy
+#| msgid "Clients"
+msgid "clients_table"
+msgstr "Clientes"
+
+#: client/views.py:100
+#, fuzzy
+#| msgid "{} Clients deleted successfully"
+msgid "{} Client(s) deleted successfully"
+msgstr "{} Cliente(s) deletados com sucesso"
+
+#: client/views.py:152
+msgid "{} was edited successfully"
+msgstr "{} foi editado com sucesso"
+
+#: client/views.py:157
+msgid "{} was created successfully"
+msgstr "{} foi criado com sucesso"
 
 #: dashboard/templates/dashboard.html:6 dashboard/views.py:8
 #: templates/navbar_vertical.html:32
@@ -211,11 +227,15 @@ msgstr "Todos os objetos abaixo serão excluidos!!"
 msgid "Objects"
 msgstr "Objetos"
 
-#: templates/error.html:15
+#: templates/confirm_delete.html:30
+msgid "Confirm"
+msgstr "Confirmar"
+
+#: templates/error.html:14
 msgid "Oops ... something went wrong"
 msgstr "Oops ... algo deu errado"
 
-#: templates/error.html:20
+#: templates/error.html:19
 msgid "Go to Home"
 msgstr "Ir para Início"
 
@@ -242,6 +262,14 @@ msgstr "Procurar..."
 #: templates/header.html:24
 msgid "Search in website"
 msgstr "Procurar no website"
+
+#: templates/header_notification.html:11
+msgid "Show notifications"
+msgstr "Mostrar notificações"
+
+#: templates/header_notification.html:22
+msgid "Important"
+msgstr "Importante"
 
 #: templates/login.html:20
 msgid "User or Password wrong"
@@ -298,3 +326,10 @@ msgstr "Balanço Patrimonial"
 #: templates/navbar_vertical.html:109
 msgid "Admin"
 msgstr "Admin"
+
+#: templates/navbar_vertical.html:119
+msgid "Error"
+msgstr "Erro"
+
+#~ msgid "Add new client"
+#~ msgstr "Add novo cliente"
