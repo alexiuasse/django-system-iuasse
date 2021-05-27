@@ -1,21 +1,20 @@
-{% extends './base.html' %}
+{% extends 'base.html' %}
 {% load i18n %}
 {% load static %}
 {% load svg_icons %}
+
 {% block body_html %}
 
 <body class="antialiased border-top-wide border-primary d-flex flex-column">
-    <div class="flex-fill d-flex align-items-center justify-content-center">
-        <div class="container-tight py-6">
+    <div class="page page-center">
+        <div class="container-tight py-4">
             <div class="empty">
-                <div class="empty-icon">
-                    <img alt="" class="mb-4" height="128" src="{% static 'illustrations/undraw_bug_fixing_oc7a.svg' %}">
-                    <div class="display-4">{{error_code}}</div>
-                </div>
-                <p class="empty-title h3">{% trans "Oops ... something went wrong" %}</p>
+                <img alt="error" height="150" src="{% static 'illustrations/undraw_bug_fixing_oc7a.svg' %}">
+                <div class="empty-header">{{error_code}}</div>
+                <p class="empty-title">{% trans "Oops ... something went wrong" %}</p>
                 <p class="empty-subtitle text-muted">{{error_text}}</p>
                 <div class="empty-action">
-                    <a class="btn btn-primary" href="{% url 'dashboard:dashboard'%}">
+                    <a href="{% url 'dashboard:dashboard' %}" class="btn btn-primary">
                         {% svg_icon "arrow_back" "icon" %}
                         {% trans "Go to Home" %}
                     </a>
@@ -23,12 +22,9 @@
             </div>
         </div>
     </div>
-    <!-- Libs JS -->
-    <script src="{% static 'base/dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
-    <!-- Tabler Core -->
+    {% block javascript %}
     <script src="{% static 'base/dist/js/tabler.min.js' %}"></script>
-    <script>
-        document.body.style.display = "block";
-    </script>
+    {% endblock %}
 </body>
-{% endblock %}
+
+{% endblock body_html %}

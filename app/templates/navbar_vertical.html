@@ -23,8 +23,8 @@
 
         <div class="collapse navbar-collapse" id="navbar-menu">
             <ul class="navbar-nav pt-lg-3">
-                <li class="nav-item">
-                    <a class="nav-link" href=".">
+                <li class="nav-item {% if request.resolver_match.namespaces.0 == 'dashboard' %} active {% endif %}">
+                    <a class="nav-link" href="{% url 'dashboard:dashboard'%}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             {% svg_icon "dashboard" "icon" %}
                         </span>
@@ -33,7 +33,7 @@
                         </span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {% if request.resolver_match.namespaces.0 == 'client' %} active {% endif %}">
                     <a class="nav-link" href="{% url 'client:view-add' %}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             {% svg_icon "user" "icon" %}
@@ -107,6 +107,16 @@
                         </span>
                         <span class="nav-link-title">
                             {% trans "Admin" %}
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'error-test' %}">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            {% svg_icon "bug" "icon" %}
+                        </span>
+                        <span class="nav-link-title">
+                            {% trans "Error" %}
                         </span>
                     </a>
                 </li>

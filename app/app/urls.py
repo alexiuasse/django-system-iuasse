@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 from django.contrib.auth import views as auth_views
-from .views import index, logout_view
+from .views import index, logout_view, error_test_view
 
 urlpatterns = [
     path('', index, name='index'),
@@ -15,6 +15,7 @@ urlpatterns = [
 
     path('dashboard/', include("dashboard.urls")),
     path('client/', include("client.urls")),
+    path('error/', error_test_view, name="error-test"),
 ]
 
 # Handling errors, but only if debug is set to False and there is another

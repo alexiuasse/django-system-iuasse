@@ -1,6 +1,4 @@
 from django.shortcuts import render
-from django.contrib.auth.decorators import login_required, permission_required
-from django.views.decorators.http import require_http_methods
 from django_tables2 import LazyPaginator
 from django_tables2 import RequestConfig
 from django_tables2.export.export import TableExport
