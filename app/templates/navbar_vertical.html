@@ -33,15 +33,25 @@
                         </span>
                     </a>
                 </li>
-                <li class="nav-item {% if request.resolver_match.namespaces.0 == 'client' %} active {% endif %}">
-                    <a class="nav-link" href="{% url 'client:view-add' %}">
+                <li class="nav-item dropdown
+                 {% if request.resolver_match.namespaces.0 == 'client' %} active {% endif %}">
+                    <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" role="button"
+                        aria-expanded="false">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            {% svg_icon "user" "icon" %}
+                            {% svg_icon "users" "icon" %}
                         </span>
                         <span class="nav-link-title">
                             {% trans "Clients" %}
                         </span>
                     </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'client:client:view' %}">
+                            {% trans "Clients" %}
+                        </a>
+                        <a class="dropdown-item" href="{% url 'client:occupation:view' %}">
+                            {% trans "Occupations" %}
+                        </a>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href=".">

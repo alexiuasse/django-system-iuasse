@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-27 19:30-0300\n"
+"POT-Creation-Date: 2021-05-28 22:14-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: app/base_views.py:155
+msgid "{} was created successfully"
+msgstr "{} foi criado com sucesso"
+
+#: app/base_views.py:174
+msgid "{} was edited successfully"
+msgstr "{} foi editado com sucesso"
+
+#: app/base_views.py:184
+#, fuzzy
+#| msgid "{} Clients deleted successfully"
+msgid "{} Client(s) deleted successfully"
+msgstr "{} Cliente(s) deletados com sucesso"
 
 #: client/models.py:11 client/models.py:60 financial/models.py:12
 #: financial/models.py:25 financial/models.py:41 service/models.py:14
@@ -40,87 +54,91 @@ msgstr "Telefone"
 msgid "Birthday"
 msgstr "Aniversário"
 
-#: client/models.py:80
+#: client/models.py:80 client/views.py:18
 msgid "Occupation"
 msgstr "Ocupação"
 
-#: client/templates/modal.html:9 client/templates/view.html:26
+#: client/templates/client/modal.html:9 client/templates/client/view.html:26
 msgid "New Client"
 msgstr "Novo Cliente"
 
-#: client/templates/modal.html:16
+#: client/templates/client/modal.html:16
+#: client/templates/occupation/modal.html:16
 msgid "Close"
 msgstr "Fechar"
 
-#: client/templates/modal.html:17
+#: client/templates/client/modal.html:17
+#: client/templates/occupation/modal.html:17
 msgid "Save"
 msgstr "Salvar"
 
-#: client/templates/modal.html:31
+#: client/templates/client/modal.html:31
+#: client/templates/occupation/modal.html:31
 msgid "Are you sure?"
 msgstr "Você tem certeza?"
 
-#: client/templates/modal.html:33
+#: client/templates/client/modal.html:33
+#: client/templates/occupation/modal.html:33
 msgid "Do you really want to remove"
 msgstr "Você realmente quer excluir"
 
-#: client/templates/modal.html:35
+#: client/templates/client/modal.html:35
 msgid "client(s)? What you've done cannot be undone."
 msgstr "cliente(s)? Essa operação não pode ser desfeita."
 
-#: client/templates/modal.html:42 templates/confirm_delete.html:29
+#: client/templates/client/modal.html:42
+#: client/templates/occupation/modal.html:42 templates/confirm_delete.html:29
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: client/templates/modal.html:47 client/templates/view.html:85
+#: client/templates/client/modal.html:47 client/templates/client/view.html:84
+#: client/templates/occupation/modal.html:47
+#: client/templates/occupation/view.html:84
 #, fuzzy
 #| msgid "Delete "
 msgid "Delete"
 msgstr "Excluir"
 
-#: client/templates/modal.html:49
+#: client/templates/client/modal.html:49
+#: client/templates/occupation/modal.html:49
 #, fuzzy
 #| msgid "Clients"
 msgid "client(s)"
 msgstr "Clientes"
 
-#: client/templates/view.html:48
+#: client/templates/client/view.html:47
+#: client/templates/occupation/view.html:47
 #, fuzzy
 #| msgid "Search…"
 msgid "Search"
 msgstr "Procurar..."
 
-#: client/templates/view.html:53
+#: client/templates/client/view.html:52
+#: client/templates/occupation/view.html:52
 msgid "Clear"
 msgstr "Limpar"
 
-#: client/templates/view.html:90
+#: client/templates/client/view.html:89
+#: client/templates/occupation/view.html:89
 msgid "Edit"
 msgstr "Editar"
 
-#: client/views.py:25 service/models.py:29
+#: client/templates/occupation/modal.html:9
+#: client/templates/occupation/view.html:26
+#, fuzzy
+#| msgid "Occupation"
+msgid "New Occupation"
+msgstr "Nova Ocupação"
+
+#: client/templates/occupation/modal.html:35
+#, fuzzy
+#| msgid "client(s)? What you've done cannot be undone."
+msgid "occupation(s)? What you've done cannot be undone."
+msgstr "ocupação(ões)? Essa operação não pode ser desfeita."
+
+#: client/views.py:31 service/models.py:29
 msgid "Client"
 msgstr "Cliente"
-
-#: client/views.py:77
-#, fuzzy
-#| msgid "Clients"
-msgid "clients_table"
-msgstr "Clientes"
-
-#: client/views.py:100
-#, fuzzy
-#| msgid "{} Clients deleted successfully"
-msgid "{} Client(s) deleted successfully"
-msgstr "{} Cliente(s) deletados com sucesso"
-
-#: client/views.py:152
-msgid "{} was edited successfully"
-msgstr "{} foi editado com sucesso"
-
-#: client/views.py:157
-msgid "{} was created successfully"
-msgstr "{} foi criado com sucesso"
 
 #: dashboard/templates/dashboard.html:6 dashboard/views.py:8
 #: templates/navbar_vertical.html:32
@@ -279,57 +297,68 @@ msgstr "Usuário ou Senha errado"
 msgid "Login"
 msgstr "Entrar"
 
-#: templates/navbar_vertical.html:42
+#: templates/navbar_vertical.html:44 templates/navbar_vertical.html:49
 msgid "Clients"
 msgstr "Clientes"
 
 #: templates/navbar_vertical.html:52
+#, fuzzy
+#| msgid "Occupation"
+msgid "Occupations"
+msgstr "Ocupação"
+
+#: templates/navbar_vertical.html:62
 msgid "Contracts"
 msgstr "Contratos"
 
-#: templates/navbar_vertical.html:63
+#: templates/navbar_vertical.html:73
 msgid "Service"
 msgstr "Serviço"
 
-#: templates/navbar_vertical.html:68
+#: templates/navbar_vertical.html:78
 msgid "One Page"
 msgstr "Uma Página"
 
-#: templates/navbar_vertical.html:71
+#: templates/navbar_vertical.html:81
 msgid "Web System"
 msgstr "Sistema Web"
 
-#: templates/navbar_vertical.html:74
+#: templates/navbar_vertical.html:84
 msgid "Mobile"
 msgstr "Mobile"
 
-#: templates/navbar_vertical.html:77
+#: templates/navbar_vertical.html:87
 msgid "Domains"
 msgstr "Domínios"
 
-#: templates/navbar_vertical.html:88
+#: templates/navbar_vertical.html:98
 msgid "Financial"
 msgstr "Financeiro"
 
-#: templates/navbar_vertical.html:93
+#: templates/navbar_vertical.html:103
 msgid "List"
 msgstr "Lista"
 
-#: templates/navbar_vertical.html:96
+#: templates/navbar_vertical.html:106
 msgid "Charts"
 msgstr "Gráficos"
 
-#: templates/navbar_vertical.html:99
+#: templates/navbar_vertical.html:109
 msgid "Balance Sheet"
 msgstr "Balanço Patrimonial"
 
-#: templates/navbar_vertical.html:109
+#: templates/navbar_vertical.html:119
 msgid "Admin"
 msgstr "Admin"
 
-#: templates/navbar_vertical.html:119
+#: templates/navbar_vertical.html:129
 msgid "Error"
 msgstr "Erro"
+
+#, fuzzy
+#~| msgid "Clients"
+#~ msgid "clients_table"
+#~ msgstr "Clientes"
 
 #~ msgid "Add new client"
 #~ msgstr "Add novo cliente"

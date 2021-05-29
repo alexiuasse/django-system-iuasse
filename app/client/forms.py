@@ -4,7 +4,24 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Div, Layout, Row, Field
 import re
 
-from .models import Client
+from .models import Client, Occupation
+
+
+class OccupationForm(forms.ModelForm):
+    prefix = "occupationform"
+
+    id = forms.IntegerField(initial=0)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_tag = False
+        self.helper.form_class = 'form-control'
+        self.fields['id'].widget = forms.HiddenInput()
+
+    class Meta:
+        model = Occupation
+        fields = '__all__'
 
 
 class ClientForm(forms.ModelForm):

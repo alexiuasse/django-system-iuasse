@@ -15,18 +15,17 @@
 {% block page_title %}
 <h2 class="page-title">
     <h2 class="page-title">
-        {% svg_icon page_title_icon "icon" %} {{page_title}}
+        {% if page_title_icon %}{% svg_icon page_title_icon "icon" %}{% endif %} {{page_title}}
     </h2>
 </h2>
 {% endblock page_title %}
 
 {% block page_title_actions_items %}
-<a href="#" class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-client">
+<a href="#" class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-form">
     {% svg_icon "plus" "icon" %}
-    {% trans "New Client" %}
+    {% trans "New Occupation" %}
 </a>
-<a href="#" class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal" data-bs-target="#modal-client"
-    aria-label="Create new report">
+<a href="#" class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal" data-bs-target="#modal-form">
     {% svg_icon "plus" "icon" %}
 </a>
 {% endblock page_title_actions_items %}
@@ -37,18 +36,18 @@
     <div class="card-body">
         <form action="" method="get" class="form form-inline" id="form-filter">
             <div class="row">
-                <input type="hidden" name="reset-filter" , id="id_reset-filter" value="false">
+                <input type="checkbox" hidden name="reset-filter" id="id_reset-filter">
                 {% for input in filter.form %}
                 <div class="form-group col-lg-3 col-md-6 col-sm-12 mb-0">
                     {% bootstrap_field input %}
                 </div>
                 {% endfor %}
-                <div class="form-group col-lg-3 col-sm-12 mb-auto mt-auto">
+                <div class="form-group col mb-auto mt-auto">
                     <button class="btn btn-primary btn-sm" type="submit" aria-label="Search">
                         {% svg_icon "search" "icon" %} {% trans "Search" %}
                     </button>
                     <a href="#" class="btn btn-primary btn-sm"
-                        onclick="$('#id_reset-filter').val('true'); $('#form-filter').trigger('submit');"
+                        onclick="$('#id_reset-filter').trigger('click'); $('#form-filter').trigger('submit');"
                         aria-label="Clear">
                         {% svg_icon "clear-all" "icon" %} {% trans "Clear" %}
                     </a>

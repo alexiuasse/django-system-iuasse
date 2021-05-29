@@ -2,7 +2,7 @@ jQuery(function () {
     // Calling select2 on the select input
     $('#id_clientform-occupation').select2({
         // need to put this because is inside a modal
-        dropdownParent: $('#modal-client'),
+        dropdownParent: $('#modal-form'),
         theme: 'bootstrap',
     });
 
@@ -14,7 +14,7 @@ jQuery(function () {
 
     // if creating a new client has some error, call again the modal with form
     if (showModal == "True") {
-        jQuery('#modal-client').modal('show')
+        jQuery('#modal-form').modal('show')
     }
 
 });
