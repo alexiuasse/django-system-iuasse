@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-28 22:14-0300\n"
+"POT-Creation-Date: 2021-05-30 12:52-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,22 +18,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: app/base_views.py:155
+#: app/base_views.py:160
 msgid "{} was created successfully"
 msgstr "{} foi criado com sucesso"
 
-#: app/base_views.py:174
+#: app/base_views.py:179
 msgid "{} was edited successfully"
 msgstr "{} foi editado com sucesso"
 
-#: app/base_views.py:184
+#: app/base_views.py:189
 #, fuzzy
 #| msgid "{} Clients deleted successfully"
 msgid "{} Client(s) deleted successfully"
 msgstr "{} Cliente(s) deletados com sucesso"
 
-#: client/models.py:11 client/models.py:60 financial/models.py:12
-#: financial/models.py:25 financial/models.py:41 service/models.py:14
+#: client/models.py:11 client/models.py:60 financial/models.py:14
+#: financial/models.py:30 financial/models.py:49 service/models.py:14
 #: service/models.py:86
 msgid "Name"
 msgstr "Nome"
@@ -54,7 +54,7 @@ msgstr "Telefone"
 msgid "Birthday"
 msgstr "Aniversário"
 
-#: client/models.py:80 client/views.py:18
+#: client/models.py:80 client/views.py:18 templates/navbar_vertical.html:52
 msgid "Occupation"
 msgstr "Ocupação"
 
@@ -64,21 +64,37 @@ msgstr "Novo Cliente"
 
 #: client/templates/client/modal.html:16
 #: client/templates/occupation/modal.html:16
+#: financial/templates/cost_center/modal.html:16
+#: financial/templates/financial_release/modal.html:16
+#: financial/templates/payment_status/modal.html:16
+#: financial/templates/type_of_payment/modal.html:16
 msgid "Close"
 msgstr "Fechar"
 
 #: client/templates/client/modal.html:17
 #: client/templates/occupation/modal.html:17
+#: financial/templates/cost_center/modal.html:17
+#: financial/templates/financial_release/modal.html:17
+#: financial/templates/payment_status/modal.html:17
+#: financial/templates/type_of_payment/modal.html:17
 msgid "Save"
 msgstr "Salvar"
 
 #: client/templates/client/modal.html:31
 #: client/templates/occupation/modal.html:31
+#: financial/templates/cost_center/modal.html:31
+#: financial/templates/financial_release/modal.html:31
+#: financial/templates/payment_status/modal.html:31
+#: financial/templates/type_of_payment/modal.html:31
 msgid "Are you sure?"
 msgstr "Você tem certeza?"
 
 #: client/templates/client/modal.html:33
 #: client/templates/occupation/modal.html:33
+#: financial/templates/cost_center/modal.html:33
+#: financial/templates/financial_release/modal.html:33
+#: financial/templates/payment_status/modal.html:33
+#: financial/templates/type_of_payment/modal.html:33
 msgid "Do you really want to remove"
 msgstr "Você realmente quer excluir"
 
@@ -87,13 +103,26 @@ msgid "client(s)? What you've done cannot be undone."
 msgstr "cliente(s)? Essa operação não pode ser desfeita."
 
 #: client/templates/client/modal.html:42
-#: client/templates/occupation/modal.html:42 templates/confirm_delete.html:29
+#: client/templates/occupation/modal.html:42
+#: financial/templates/cost_center/modal.html:42
+#: financial/templates/financial_release/modal.html:42
+#: financial/templates/payment_status/modal.html:42
+#: financial/templates/type_of_payment/modal.html:42
+#: templates/confirm_delete.html:29
 msgid "Cancel"
 msgstr "Cancelar"
 
 #: client/templates/client/modal.html:47 client/templates/client/view.html:84
 #: client/templates/occupation/modal.html:47
-#: client/templates/occupation/view.html:84
+#: client/templates/occupation/view.html:82
+#: financial/templates/cost_center/modal.html:47
+#: financial/templates/cost_center/view.html:82
+#: financial/templates/financial_release/modal.html:47
+#: financial/templates/financial_release/view.html:84
+#: financial/templates/payment_status/modal.html:47
+#: financial/templates/payment_status/view.html:82
+#: financial/templates/type_of_payment/modal.html:47
+#: financial/templates/type_of_payment/view.html:82
 #, fuzzy
 #| msgid "Delete "
 msgid "Delete"
@@ -101,36 +130,50 @@ msgstr "Excluir"
 
 #: client/templates/client/modal.html:49
 #: client/templates/occupation/modal.html:49
+#: financial/templates/cost_center/modal.html:49
+#: financial/templates/financial_release/modal.html:49
+#: financial/templates/payment_status/modal.html:49
+#: financial/templates/type_of_payment/modal.html:49
 #, fuzzy
 #| msgid "Clients"
 msgid "client(s)"
 msgstr "Clientes"
 
 #: client/templates/client/view.html:47
-#: client/templates/occupation/view.html:47
+#: client/templates/occupation/view.html:45
+#: financial/templates/cost_center/view.html:45
+#: financial/templates/financial_release/view.html:47
+#: financial/templates/payment_status/view.html:45
+#: financial/templates/type_of_payment/view.html:45
 #, fuzzy
 #| msgid "Search…"
 msgid "Search"
 msgstr "Procurar..."
 
 #: client/templates/client/view.html:52
-#: client/templates/occupation/view.html:52
+#: client/templates/occupation/view.html:50
+#: financial/templates/cost_center/view.html:50
+#: financial/templates/financial_release/view.html:52
+#: financial/templates/payment_status/view.html:50
+#: financial/templates/type_of_payment/view.html:50
 msgid "Clear"
 msgstr "Limpar"
 
 #: client/templates/client/view.html:89
-#: client/templates/occupation/view.html:89
+#: client/templates/occupation/view.html:87
+#: financial/templates/cost_center/view.html:87
+#: financial/templates/financial_release/view.html:89
+#: financial/templates/payment_status/view.html:87
+#: financial/templates/type_of_payment/view.html:87
 msgid "Edit"
 msgstr "Editar"
 
 #: client/templates/occupation/modal.html:9
-#: client/templates/occupation/view.html:26
-#| msgid "Occupation"
+#: client/templates/occupation/view.html:24
 msgid "New Occupation"
 msgstr "Nova Ocupação"
 
 #: client/templates/occupation/modal.html:35
-#| msgid "client(s)? What you've done cannot be undone."
 msgid "occupation(s)? What you've done cannot be undone."
 msgstr "ocupação(ões)? Essa operação não pode ser desfeita."
 
@@ -143,37 +186,104 @@ msgstr "Cliente"
 msgid "Dashboard"
 msgstr "Dashboard"
 
-#: financial/models.py:16 financial/models.py:29 service/models.py:18
+#: financial/models.py:18 financial/models.py:34 service/models.py:18
 msgid "Active"
 msgstr "Ativo"
 
-#: financial/models.py:45
+#: financial/models.py:53
 msgid "Asset"
 msgstr "Ativo"
 
-#: financial/models.py:46
+#: financial/models.py:54
 msgid "Liability"
 msgstr "Passivo"
 
-#: financial/models.py:54
+#: financial/models.py:65
 msgid "Total Value"
 msgstr "Valor Total"
 
-#: financial/models.py:56
+#: financial/models.py:67
 msgid "If the type of payment is parceled out, this is the real total!"
 msgstr "Se o tipo de pagamento é parcelado, esse é o valor real!"
 
-#: financial/models.py:60
+#: financial/models.py:71 templates/navbar_vertical.html:110
 msgid "Type of Payment"
 msgstr "Tipo de Pagamento"
 
-#: financial/models.py:62
+#: financial/models.py:73
 msgid "Total Parcels"
 msgstr "Parcelas Totais"
 
-#: financial/models.py:67
+#: financial/models.py:78 financial/views.py:45
+#: templates/navbar_vertical.html:113
 msgid "Cost Center"
 msgstr "Centro de Custo"
+
+#: financial/models.py:79
+msgid "Date"
+msgstr "Data"
+
+#: financial/models.py:81 service/models.py:154
+msgid "Attachment"
+msgstr "Anexo"
+
+#: financial/templates/cost_center/modal.html:9
+#: financial/templates/cost_center/view.html:24
+#, fuzzy
+#| msgid "Cost Center"
+msgid "New Cost Center"
+msgstr "Centro de Custo"
+
+#: financial/templates/cost_center/modal.html:35
+#: financial/templates/payment_status/modal.html:35
+#, fuzzy
+#| msgid "client(s)? What you've done cannot be undone."
+msgid "payment status(s)? What you've done cannot be undone."
+msgstr "cliente(s)? Essa operação não pode ser desfeita."
+
+#: financial/templates/financial_release/modal.html:9
+#: financial/templates/financial_release/view.html:26
+#| msgid "Financial"
+msgid "New Financial Release"
+msgstr "Novo Lançamento Financeiro"
+
+#: financial/templates/financial_release/modal.html:35
+#| msgid "client(s)? What you've done cannot be undone."
+msgid "financial release(s)? What you've done cannot be undone."
+msgstr "lançamento financeiro(s)? Essa operação não pode ser desfeita."
+
+#: financial/templates/payment_status/modal.html:9
+#: financial/templates/payment_status/view.html:24
+msgid "New Payment Status"
+msgstr "Novo Status de Pagamento"
+
+#: financial/templates/type_of_payment/modal.html:9
+#: financial/templates/type_of_payment/view.html:24
+#| msgid "Type of Payment"
+msgid "New Type Of Payment"
+msgstr "Novo Tipo de Pagamento"
+
+#: financial/templates/type_of_payment/modal.html:35
+#, fuzzy
+#| msgid "client(s)? What you've done cannot be undone."
+msgid "type of payment(s)? What you've done cannot be undone."
+msgstr "cliente(s)? Essa operação não pode ser desfeita."
+
+#: financial/views.py:19 templates/navbar_vertical.html:107
+msgid "Payment Status"
+msgstr "Status de Pagamento"
+
+#: financial/views.py:32
+#, fuzzy
+#| msgid "Type of Payment"
+msgid "Type Of Payment"
+msgstr "Tipo de Pagamento"
+
+#: financial/views.py:58 templates/navbar_vertical.html:104
+#, fuzzy
+#| msgid "Financial"
+msgid "Financial Release"
+msgstr "Financeiro"
 
 #: service/models.py:33
 msgid "Type of Service"
@@ -222,10 +332,6 @@ msgstr "Expiração do contrato em meses."
 #: service/models.py:153
 msgid "Description"
 msgstr "Descrição"
-
-#: service/models.py:154
-msgid "Attachment"
-msgstr "Anexo"
 
 #: templates/confirm_delete.html:7
 msgid "Confirm Delete"
@@ -299,12 +405,6 @@ msgstr "Entrar"
 msgid "Clients"
 msgstr "Clientes"
 
-#: templates/navbar_vertical.html:52
-#, fuzzy
-#| msgid "Occupation"
-msgid "Occupations"
-msgstr "Ocupação"
-
 #: templates/navbar_vertical.html:62
 msgid "Contracts"
 msgstr "Contratos"
@@ -329,29 +429,31 @@ msgstr "Mobile"
 msgid "Domains"
 msgstr "Domínios"
 
-#: templates/navbar_vertical.html:98
+#: templates/navbar_vertical.html:99
 msgid "Financial"
 msgstr "Financeiro"
 
-#: templates/navbar_vertical.html:103
-msgid "List"
-msgstr "Lista"
-
-#: templates/navbar_vertical.html:106
-msgid "Charts"
-msgstr "Gráficos"
-
-#: templates/navbar_vertical.html:109
-msgid "Balance Sheet"
-msgstr "Balanço Patrimonial"
-
-#: templates/navbar_vertical.html:119
+#: templates/navbar_vertical.html:123
 msgid "Admin"
 msgstr "Admin"
 
-#: templates/navbar_vertical.html:129
+#: templates/navbar_vertical.html:133
 msgid "Error"
 msgstr "Erro"
+
+#, fuzzy
+#~| msgid "Occupation"
+#~ msgid "Occupations"
+#~ msgstr "Ocupação"
+
+#~ msgid "List"
+#~ msgstr "Lista"
+
+#~ msgid "Charts"
+#~ msgstr "Gráficos"
+
+#~ msgid "Balance Sheet"
+#~ msgstr "Balanço Patrimonial"
 
 #, fuzzy
 #~| msgid "Clients"
