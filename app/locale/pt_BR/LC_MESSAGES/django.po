@@ -125,13 +125,11 @@ msgstr "Editar"
 
 #: client/templates/occupation/modal.html:9
 #: client/templates/occupation/view.html:26
-#, fuzzy
 #| msgid "Occupation"
 msgid "New Occupation"
 msgstr "Nova Ocupação"
 
 #: client/templates/occupation/modal.html:35
-#, fuzzy
 #| msgid "client(s)? What you've done cannot be undone."
 msgid "occupation(s)? What you've done cannot be undone."
 msgstr "ocupação(ões)? Essa operação não pode ser desfeita."
