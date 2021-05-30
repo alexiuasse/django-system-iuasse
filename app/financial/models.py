@@ -83,6 +83,9 @@ class FinancialRelease(models.Model):
                                   blank=True,
                                   null=True)
 
+    def __str__(self) -> str:
+        return "{} - {}".format(self.total_value, self.type_of_payment)
+
     def get_absolute_url(self):
         return reverse_lazy(f'{self._meta.app_label}:{self._meta.model_name}:view')
 
