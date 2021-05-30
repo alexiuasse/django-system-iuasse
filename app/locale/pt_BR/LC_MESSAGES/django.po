@@ -280,10 +280,9 @@ msgid "Type Of Payment"
 msgstr "Tipo de Pagamento"
 
 #: financial/views.py:58 templates/navbar_vertical.html:104
-#, fuzzy
 #| msgid "Financial"
 msgid "Financial Release"
-msgstr "Financeiro"
+msgstr "Lançamento Financeiro"
 
 #: service/models.py:33
 msgid "Type of Service"
