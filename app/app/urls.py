@@ -15,6 +15,7 @@ urlpatterns = [
 
     path('dashboard/', include("dashboard.urls")),
     path('client/', include("client.urls")),
+    path('financial/', include("financial.urls")),
     path('error/', error_test_view, name="error-test"),
 ]
 

@@ -1,14 +1,11 @@
 from django import forms
-from django.conf import settings
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Div, Layout, Row, Field
-import re
 
 from .models import Client, Occupation
 
 
 class OccupationForm(forms.ModelForm):
-    prefix = "occupationform"
 
     id = forms.IntegerField(initial=0)
 
@@ -25,7 +22,6 @@ class OccupationForm(forms.ModelForm):
 
 
 class ClientForm(forms.ModelForm):
-    prefix = "clientform"
 
     id = forms.IntegerField(initial=0)
     birthday = forms.DateField(localize=True, required=False,

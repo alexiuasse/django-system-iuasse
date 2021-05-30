@@ -1,5 +1,4 @@
-from typing import Sequence
-from django_tables2 import tables, TemplateColumn, Column, CheckBoxColumn
+from django_tables2 import tables, CheckBoxColumn
 
 from .models import Client, Occupation
 
