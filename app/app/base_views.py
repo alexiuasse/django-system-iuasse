@@ -61,7 +61,7 @@ class MyViewCreateUpdateDelete(LoginRequiredMixin, View):
             )
 
         if self.form == None:
-            self.form = self.form_class(None)
+            self.form = self.form_class(None, prefix=self.form_prefix)
 
         context = {
             'page_title': self.page_title,
@@ -110,6 +110,10 @@ class MyViewCreateUpdateDelete(LoginRequiredMixin, View):
         """
         return self.request.POST.copy()
 
+    # def set_form(self):
+    #     """Setting the form with the prefix provided"""
+    #     self.form = self.form_class(prefix=self.form_prefix)
+
     def set_filter(self):
         """Set the filter"""
         get = self.get_GET_data()
@@ -149,7 +153,7 @@ class MyViewCreateUpdateDelete(LoginRequiredMixin, View):
         )
         self.form_valid()
         # if create okay, reset the form
-        self.form = self.form_class(None)
+        self.form = self.form_class(None, prefix=self.form_prefix)
         messages.success(
             self.request,
             _("{} was created successfully").format(self.object)
@@ -168,7 +172,7 @@ class MyViewCreateUpdateDelete(LoginRequiredMixin, View):
         )
         self.form_valid()
         # if update okay, reset the form
-        self.form = self.form_class(None)
+        self.form = self.form_class(None, prefix=self.form_prefix)
         messages.success(
             self.request,
             _("{} was edited successfully").format(self.object)

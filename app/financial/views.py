@@ -7,6 +7,45 @@ from .filters import *
 from .models import *
 
 
+class PaymentStatusView(MyViewCreateUpdateDelete):
+    model = PaymentStatus
+    form_class = PaymentStatusForm
+    form_prefix = "paymentstatusform"
+    table_class = PaymentStatusTable
+    filter_class = PaymentStatusFilter
+    queryset = PaymentStatus.objects.all()
+    template_name = "payment_status/view.html"
+    page_title = _("Payment Status")
+    page_title_icon = "file_invoice"
+    show_modal = False
+
+
+class TypeOfPaymentView(MyViewCreateUpdateDelete):
+    model = TypeOfPayment
+    form_class = TypeOfPaymentForm
+    form_prefix = "typeofpaymentform"
+    table_class = TypeOfPaymentTable
+    filter_class = TypeOfPaymentFilter
+    queryset = TypeOfPayment.objects.all()
+    template_name = "type_of_payment/view.html"
+    page_title = _("Type Of Payment")
+    page_title_icon = "file_invoice"
+    show_modal = False
+
+
+class CostCenterView(MyViewCreateUpdateDelete):
+    model = CostCenter
+    form_class = CostCenterForm
+    form_prefix = "costcenterform"
+    table_class = CostCenterTable
+    filter_class = CostCenterFilter
+    queryset = CostCenter.objects.all()
+    template_name = "cost_center/view.html"
+    page_title = _("Cost Center")
+    page_title_icon = "file_invoice"
+    show_modal = False
+
+
 class FinancialReleaseView(MyViewCreateUpdateDelete):
     model = FinancialRelease
     form_class = FinancialReleaseForm

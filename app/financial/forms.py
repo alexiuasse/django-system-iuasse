@@ -6,6 +6,54 @@ from crispy_forms.bootstrap import PrependedText
 from .models import *
 
 
+class PaymentStatusForm(forms.ModelForm):
+
+    id = forms.IntegerField(initial=0)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_tag = False
+        self.helper.form_class = 'form-control'
+        self.fields['id'].widget = forms.HiddenInput()
+
+    class Meta:
+        model = PaymentStatus
+        fields = '__all__'
+
+
+class TypeOfPaymentForm(forms.ModelForm):
+
+    id = forms.IntegerField(initial=0)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_tag = False
+        self.helper.form_class = 'form-control'
+        self.fields['id'].widget = forms.HiddenInput()
+
+    class Meta:
+        model = TypeOfPayment
+        fields = '__all__'
+
+
+class CostCenterForm(forms.ModelForm):
+
+    id = forms.IntegerField(initial=0)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_tag = False
+        self.helper.form_class = 'form-control'
+        self.fields['id'].widget = forms.HiddenInput()
+
+    class Meta:
+        model = CostCenter
+        fields = '__all__'
+
+
 class FinancialReleaseForm(forms.ModelForm):
 
     id = forms.IntegerField(initial=0)

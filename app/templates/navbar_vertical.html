@@ -49,7 +49,7 @@
                             {% trans "Clients" %}
                         </a>
                         <a class="dropdown-item" href="{% url 'client:occupation:view' %}">
-                            {% trans "Occupations" %}
+                            {% trans "Occupation" %}
                         </a>
                     </div>
                 </li>
@@ -103,14 +103,14 @@
                         <a class="dropdown-item" href="{% url 'financial:financialrelease:view' %}">
                             {% trans "Financial Release" %}
                         </a>
-                        <a class="dropdown-item" href=".">
-                            {% trans "List" %}
+                        <a class="dropdown-item" href="{% url 'financial:paymentstatus:view' %}">
+                            {% trans "Payment Status" %}
                         </a>
-                        <a class="dropdown-item" href=".">
-                            {% trans "Charts" %}
+                        <a class="dropdown-item" href="{% url 'financial:typeofpayment:view' %}">
+                            {% trans "Type of Payment" %}
                         </a>
-                        <a class="dropdown-item" href=".">
-                            {% trans "Balance Sheet" %}
+                        <a class="dropdown-item" href="{% url 'financial:costcenter:view' %}">
+                            {% trans "Cost Center" %}
                         </a>
                     </div>
                 </li>
