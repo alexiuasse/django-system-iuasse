@@ -57,6 +57,9 @@ class CostCenterForm(forms.ModelForm):
 class FinancialReleaseForm(forms.ModelForm):
 
     id = forms.IntegerField(initial=0)
+    date = forms.DateField(localize=True, required=False,
+                           widget=forms.TextInput(
+                               attrs={"data-mask": "00/00/0000", "data-mask-visible": True, "placeholder": "00/00/0000", "autocomplete": "off"}))
 
     layout = Layout(
         Div(
@@ -70,6 +73,10 @@ class FinancialReleaseForm(forms.ModelForm):
                 Field('type_of_payment', wrapper_class="col-lg-6 col-sm-12"),
                 Field('total_parcels', wrapper_class="col-md-6 col-sm-12"),
             ),
+            Row(
+                Field('date', wrapper_class="col-lg-4 col-sm-12"),
+                Field('attachment', wrapper_class="col-md-8 col-sm-12"),
+            ),
         ),
     )
 
@@ -82,9 +89,4 @@ class FinancialReleaseForm(forms.ModelForm):
 
     class Meta:
         model = FinancialRelease
-        widgets = {
-            # 'address': forms.Textarea(attrs={"rows": 1, "data-bs-toggle": "autosize", "style": "overflow: hidden; overflow-wrap: break-word; resize: none;"}),
-            # 'phone': forms.TextInput(attrs={"data-mask": "(00) 0 0000-0000", "data-mask-visible": True, "placeholder": "(00) 0 0000-0000", "autocomplete": "off"}),
-            # 'birthday': forms.TextInput(attrs={"data-mask": "00/00/0000", "data-mask-visible": True, "placeholder": "00/00/0000", "autocomplete": "off"}),
-        }
         fields = '__all__'

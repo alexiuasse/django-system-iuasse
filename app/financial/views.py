@@ -1,5 +1,6 @@
 from django.utils.translation import gettext as _
 from app.base_views import MyViewCreateUpdateDelete
+from django.utils.timezone import now
 
 from .forms import *
 from .tables import *
@@ -57,3 +58,9 @@ class FinancialReleaseView(MyViewCreateUpdateDelete):
     page_title = _("Financial Release")
     page_title_icon = "file_invoice"
     show_modal = False
+
+    def get_POST_data(self):
+        post_data = super().get_POST_data()
+        if post_data.get(self.form_prefix+'-date', "__/__/____") == "__/__/____":
+            post_data[self.form_prefix+'-date'] = now()
+        return post_data

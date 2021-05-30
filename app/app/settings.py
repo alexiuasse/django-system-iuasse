@@ -162,7 +162,7 @@ CONTACT_EMAIL = "alexiuasse@gmail.com"
 SOURCE_CODE_LINK = "https://github.com/alexiuasse/django-system-iuasse"
 
 DEFAULT_DECIMAL_PLACES = 2
-DEFAULT_MAX_DIGITS = 5
+DEFAULT_MAX_DIGITS = 11
 
 # Django tables 2
 DJANGO_TABLES2_TEMPLATE = "django_tables2/bootstrap4.html"

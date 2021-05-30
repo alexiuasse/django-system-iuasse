@@ -143,6 +143,7 @@ class MyViewCreateUpdateDelete(LoginRequiredMixin, View):
         if self.form.is_valid():
             self.object = self.form.save()
         else:
+            print(self.form.errors)
             self.show_modal = True
 
     def create(self):

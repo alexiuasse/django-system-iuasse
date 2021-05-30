@@ -2,6 +2,8 @@ from django.db import models
 from django.utils.translation import gettext as _
 from django.conf import settings
 from django.urls import reverse_lazy
+from datetime import datetime
+from django.utils.timezone import now
 
 
 class PaymentStatus(models.Model):
@@ -16,6 +18,9 @@ class PaymentStatus(models.Model):
     active = models.BooleanField(verbose_name=_("Active"),
                                  default=True)
 
+    def __str__(self) -> str:
+        return self.name
+
 
 class TypeOfPayment(models.Model):
     """
@@ -28,6 +33,9 @@ class TypeOfPayment(models.Model):
                             null=False)
     active = models.BooleanField(verbose_name=_("Active"),
                                  default=True)
+
+    def __str__(self) -> str:
+        return self.name
 
 
 class CostCenter(models.Model):
@@ -44,6 +52,9 @@ class CostCenter(models.Model):
                             null=False)
     asset = models.BooleanField(verbose_name=_("Asset"))
     liability = models.BooleanField(verbose_name=_("Liability"))
+
+    def __str__(self) -> str:
+        return self.name
 
 
 class FinancialRelease(models.Model):
@@ -65,6 +76,12 @@ class FinancialRelease(models.Model):
                                     on_delete=models.SET_NULL,
                                     null=True,
                                     verbose_name=_("Cost Center"))
+    date = models.DateField(verbose_name=_("Date"),
+                            default=now)
+    attachment = models.FileField(verbose_name=_("Attachment"),
+                                  upload_to="financial_release",
+                                  blank=True,
+                                  null=True)
 
     def get_absolute_url(self):
         return reverse_lazy(f'{self._meta.app_label}:{self._meta.model_name}:view')
