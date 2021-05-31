@@ -4,9 +4,10 @@ from django.conf import settings
 from django.urls import reverse_lazy
 from datetime import datetime
 from django.utils.timezone import now
+from app.models import TimeStampMixin
 
 
-class PaymentStatus(models.Model):
+class PaymentStatus(TimeStampMixin):
     """
         Model to set the payment status.
     """
@@ -22,7 +23,7 @@ class PaymentStatus(models.Model):
         return self.name
 
 
-class TypeOfPayment(models.Model):
+class TypeOfPayment(TimeStampMixin):
     """
         Model to set the type of payment allowed.
     """
@@ -38,7 +39,7 @@ class TypeOfPayment(models.Model):
         return self.name
 
 
-class CostCenter(models.Model):
+class CostCenter(TimeStampMixin):
     """
         Model to set the cost center, this is a important model for accounting.
 
@@ -57,7 +58,7 @@ class CostCenter(models.Model):
         return self.name
 
 
-class FinancialRelease(models.Model):
+class FinancialRelease(TimeStampMixin):
     """
         Model for financial release.
     """

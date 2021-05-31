@@ -1,8 +1,9 @@
 from django.db import models
 from django.utils.translation import gettext as _
+from app.models import TimeStampMixin
 
 
-class DashboardSettings(models.Model):
+class DashboardSettings(TimeStampMixin):
     warning_domain = models.BooleanField(
         _("Warning Domain"), default=True,
         help_text=_("Warning when a domain is near to expire."))

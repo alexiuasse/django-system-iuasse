@@ -20,6 +20,7 @@ class OccupationTable(tables.Table):
         row_attrs = {'class': 'text-muted'}
         per_page = 20
         sequence = ('selection', '...')
+        exclude = ['created_at', 'updated_at']
 
 
 class ClientTable(tables.Table):
@@ -41,3 +42,4 @@ class ClientTable(tables.Table):
         # this tell that the selection will be displayed first and then '...'
         # the other fields
         sequence = ('selection', '...')
+        exclude = ['created_at', 'updated_at']

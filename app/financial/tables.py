@@ -20,6 +20,7 @@ class PaymentStatusTable(tables.Table):
         row_attrs = {'class': 'text-muted'}
         per_page = 20
         sequence = ('selection', '...')
+        exclude = ['created_at', 'updated_at']
 
 
 class TypeOfPaymentTable(tables.Table):
@@ -39,6 +40,7 @@ class TypeOfPaymentTable(tables.Table):
         row_attrs = {'class': 'text-muted'}
         per_page = 20
         sequence = ('selection', '...')
+        exclude = ['created_at', 'updated_at']
 
 
 class CostCenterTable(tables.Table):
@@ -58,6 +60,7 @@ class CostCenterTable(tables.Table):
         row_attrs = {'class': 'text-muted'}
         per_page = 20
         sequence = ('selection', '...')
+        exclude = ['created_at', 'updated_at']
 
 
 class FinancialReleaseTable(tables.Table):
@@ -77,3 +80,4 @@ class FinancialReleaseTable(tables.Table):
         row_attrs = {'class': 'text-muted'}
         per_page = 20
         sequence = ('selection', '...')
+        exclude = ['created_at', 'updated_at']

@@ -4,10 +4,10 @@ from django.conf import settings
 from dateutil.relativedelta import relativedelta
 from datetime import date
 from django.urls import reverse_lazy
-from django.utils.timezone import now
+from app.models import TimeStampMixin
 
 
-class TypeOfService(models.Model):
+class TypeOfService(TimeStampMixin):
     """
         Model to set the type of service.
     """
@@ -23,7 +23,7 @@ class TypeOfService(models.Model):
         return "{}".format(self.name)
 
 
-class WebService(models.Model):
+class WebService(TimeStampMixin):
     """
         Model to represent a web service, like build a One Page, a web system, an application for mobile with backend.
     """
@@ -85,7 +85,7 @@ class WebService(models.Model):
         return data
 
 
-class Domain(models.Model):
+class Domain(TimeStampMixin):
     """
         Model to identify a domain (network domain).
     """
@@ -142,7 +142,7 @@ class Domain(models.Model):
         return data
 
 
-class Contract(models.Model):
+class Contract(TimeStampMixin):
     """
         Model to identify a contract, this will be used in most of services.
 

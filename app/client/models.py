@@ -1,9 +1,10 @@
 from django.db import models
 from django.utils.translation import gettext as _
 from django.urls import reverse_lazy
+from app.models import TimeStampMixin
 
 
-class Occupation(models.Model):
+class Occupation(TimeStampMixin):
     """
         Model to set the Occupation, used to identify a client.
     """
@@ -52,7 +53,7 @@ class Occupation(models.Model):
         return data
 
 
-class Client(models.Model):
+class Client(TimeStampMixin):
     """
         Model to specify a client.
     """

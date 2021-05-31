@@ -20,6 +20,7 @@ class TypeOfServiceTable(tables.Table):
         row_attrs = {'class': 'text-muted'}
         per_page = 20
         sequence = ('selection', '...')
+        exclude = ['created_at', 'updated_at']
 
 
 class DomainTable(tables.Table):
@@ -39,6 +40,7 @@ class DomainTable(tables.Table):
         row_attrs = {'class': 'text-muted'}
         per_page = 20
         sequence = ('selection', '...')
+        exclude = ['created_at', 'updated_at']
 
 
 class ContractTable(tables.Table):
@@ -58,6 +60,7 @@ class ContractTable(tables.Table):
         row_attrs = {'class': 'text-muted'}
         per_page = 20
         sequence = ('selection', '...')
+        exclude = ['created_at', 'updated_at']
 
 
 class WebServiceTable(tables.Table):
@@ -77,3 +80,4 @@ class WebServiceTable(tables.Table):
         row_attrs = {'class': 'text-muted'}
         per_page = 20
         sequence = ('selection', '...')
+        exclude = ['created_at', 'updated_at']
