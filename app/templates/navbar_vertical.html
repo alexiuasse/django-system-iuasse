@@ -53,16 +53,6 @@
                         </a>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href=".">
-                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            {% svg_icon "files" "icon" %}
-                        </span>
-                        <span class="nav-link-title">
-                            {% trans "Contracts" %}
-                        </span>
-                    </a>
-                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" role="button"
                         aria-expanded="false">
@@ -74,17 +64,17 @@
                         </span>
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href=".">
-                            {% trans "One Page" %}
+                        <a class="dropdown-item" href="{% url 'service:webservice:view' %}">
+                            {% trans "Web Service" %}
                         </a>
-                        <a class="dropdown-item" href=".">
-                            {% trans "Web System" %}
+                        <a class="dropdown-item" href="{% url 'service:typeofservice:view' %}">
+                            {% trans "Type Of Service" %}
                         </a>
-                        <a class="dropdown-item" href=".">
-                            {% trans "Mobile" %}
+                        <a class="dropdown-item" href="{% url 'service:domain:view' %}">
+                            {% trans "Domain" %}
                         </a>
-                        <a class="dropdown-item" href=".">
-                            {% trans "Domains" %}
+                        <a class="dropdown-item" href="{% url 'service:contract:view' %}">
+                            {% trans "Contract" %}
                         </a>
                     </div>
                 </li>

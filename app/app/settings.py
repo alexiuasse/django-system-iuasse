@@ -161,6 +161,8 @@ FOOTER_COPYRIGHT = "Copyright © 2021"
 CONTACT_EMAIL = "alexiuasse@gmail.com"
 SOURCE_CODE_LINK = "https://github.com/alexiuasse/django-system-iuasse"
 
+MONEY_SYMBOL = "R$"
+
 DEFAULT_DECIMAL_PLACES = 2
 DEFAULT_MAX_DIGITS = 11
 

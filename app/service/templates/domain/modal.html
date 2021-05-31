@@ -1,0 +1,57 @@
+{% load crispy_forms_tags %}
+{% load svg_icons %}
+{% load i18n %}
+<div class="modal modal-blur fade" id="modal-form" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <form method="post" class="form form-control">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{% trans "New Domain" %}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {% crispy form %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn me-auto" data-bs-dismiss="modal">{% trans "Close" %}</button>
+                    <button type="submit" class="btn btn-primary" value="submit">{% trans "Save" %}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal modal-blur fade" id="modal-delete" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-status bg-danger"></div>
+            <div class="modal-body text-center py-4">
+                {% svg_icon "alert-triangle" "icon mb-2 text-danger icon-lg" %}
+                <h3>{% trans "Are you sure?" %}</h3>
+                <div class="text-muted">
+                    {% trans "Do you really want to remove" %}
+                    <span class="toDeleteCount"></span>
+                    {% trans "domain(s)? What you've done cannot be undone." %}
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="w-100">
+                    <div class="row">
+                        <div class="col"><a href="#" class="btn btn-white w-100" data-bs-dismiss="modal">
+                                {% trans "Cancel" %}
+                            </a>
+                        </div>
+                        <div class="col"><a href="#" class="btn btn-danger w-100" data-bs-dismiss="modal"
+                                onclick="$('#form-table').trigger('submit');return false;">
+                                {% trans "Delete" %}
+                                &nbsp;<span class="toDeleteCount"></span>&nbsp;
+                                {% trans "client(s)" %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

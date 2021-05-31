@@ -1,4 +1,5 @@
 from django import forms
+from django.conf import settings
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Div, Layout, Row, Field
 from crispy_forms.bootstrap import PrependedText
@@ -65,7 +66,7 @@ class FinancialReleaseForm(forms.ModelForm):
         Div(
             Field('id', type='hidden'),
             Row(
-                PrependedText('total_value', 'R$',
+                PrependedText('total_value', settings.MONEY_SYMBOL,
                               wrapper_class="col-lg-6 col-sm-12"),
                 Field('cost_center', wrapper_class="col-md-6 col-sm-12"),
             ),

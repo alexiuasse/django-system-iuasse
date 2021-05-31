@@ -18,6 +18,9 @@ class TypeOfService(models.Model):
     active = models.BooleanField(verbose_name=_("Active"),
                                  default=True)
 
+    def __str__(self) -> str:
+        return "{}".format(self.name)
+
 
 class WebService(models.Model):
     """
@@ -41,6 +44,9 @@ class WebService(models.Model):
     contract = models.ManyToManyField("service.Contract",
                                       blank=True,
                                       verbose_name=_("Contract"))
+
+    def __str__(self) -> str:
+        return "{} - {}".format(self.client, self.type_of_service)
 
     def get_absolute_url(self):
         return reverse_lazy(f'{self._meta.app_label}:{self._meta.model_name}:view')
@@ -94,6 +100,9 @@ class Domain(models.Model):
     contract = models.ManyToManyField("service.Contract",
                                       blank=True,
                                       verbose_name=_("Contract"))
+
+    def __str__(self) -> str:
+        return "{}".format(self.name)
 
     def get_absolute_url(self):
         return reverse_lazy(f'{self._meta.app_label}:{self._meta.model_name}:view')
@@ -150,11 +159,14 @@ class Contract(models.Model):
     expiration = models.IntegerField(verbose_name=_("Expiration"),
                                      default=12,
                                      help_text=_("Expiration of the contract in months."))
-    description = models.TextField(verbose_name=_("Description"))
+    description = models.TextField(verbose_name=_("Description"), blank=True)
     attachment = models.FileField(verbose_name=_("Attachment"),
                                   upload_to="contracts",
                                   blank=True,
                                   null=True)
+
+    def __str__(self) -> str:
+        return "{}/{} {} {}".format(self.start_date, self.expiration, settings.MONEY_SYMBOL, self.value)
 
     def expiration_date(self):
         """
