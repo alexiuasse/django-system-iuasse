@@ -6,6 +6,10 @@ Django Iuasse System is a system that aims to run a small business.
 
 To run this project you need to do:
 
+#### Atention
+
+If you use **Windows** the package **mysql-client** might not get installed correctly, so you need to install it manually, just go to: https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient and get the correct whl for your system. (To install just use ```pip install name_of_package.whl```.)
+
 1. Install **python 3.8** (that is the version that i use, i think you can use other version to)
 2. Make a virtual environment (what i do is ```virtualenv venv```)
 3. Run ```pip install -r requirements.txt```(this will install all libs that it needs to run)
