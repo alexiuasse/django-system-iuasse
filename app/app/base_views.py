@@ -11,7 +11,52 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import Permission
 
 
-class MyViewCreateUpdateDelete(LoginRequiredMixin, View):
+class MyPermissionMixin():
+
+    def get_permissions(self):
+        """
+        Get all the permissions that the user has of a given model.
+        If user is super user the return will have all permissions.
+
+        The permissions available are ['view', 'add', 'change', 'delete']
+        """
+        if self.request == None:
+            raise ImproperlyConfigured(
+                '{0} is missing the request attribute.'.format(
+                    self.__class__.__name__)
+            )
+
+        if self.request.user.is_superuser:
+            return ['view', 'add', 'change', 'delete']
+
+        permissions = Permission.objects.filter(
+            content_type=ContentType.objects.get_for_model(self.model),
+            user=self.request.user
+        )
+        return [perm.codename.split('_')[0] for perm in permissions]
+
+    def check_view_permission(self):
+        """Check for permission to view"""
+        if not any('view' in item for item in self.get_permissions()):
+            raise PermissionDenied()
+
+    def check_add_permission(self):
+        """Check for permission to add"""
+        if not any('add' in item for item in self.get_permissions()):
+            raise PermissionDenied()
+
+    def check_edit_permission(self):
+        """Check for permission to change"""
+        if not any('change' in item for item in self.get_permissions()):
+            raise PermissionDenied()
+
+    def check_delete_permission(self):
+        """Check for permission to delete"""
+        if not any('delete' in item for item in self.get_permissions()):
+            raise PermissionDenied()
+
+
+class MyViewCreateUpdateDelete(LoginRequiredMixin, MyPermissionMixin, View):
     """
     This is a custom view that can view, add, edit and delete a model.
     """
@@ -73,22 +118,6 @@ class MyViewCreateUpdateDelete(LoginRequiredMixin, View):
             'show_modal': self.show_modal,
         }
         return context
-
-    def get_permissions(self):
-        """
-        Get all the permissions that the user has of a given model.
-        If user is super user the return will have all permissions.
-
-        The permissions available are ['view', 'add', 'change', 'delete']
-        """
-        if self.request.user.is_superuser:
-            return ['view', 'add', 'change', 'delete']
-
-        permissions = Permission.objects.filter(
-            content_type=ContentType.objects.get_for_model(self.model),
-            user=self.request.user
-        )
-        return [perm.codename.split('_')[0] for perm in permissions]
 
     def get_GET_data(self):
         """
@@ -188,26 +217,6 @@ class MyViewCreateUpdateDelete(LoginRequiredMixin, View):
             self.request,
             _("{} Client(s) deleted successfully").format(len(pks))
         )
-
-    def check_view_permission(self):
-        """Check for permission to view"""
-        if not any('view' in item for item in self.get_permissions()):
-            raise PermissionDenied()
-
-    def check_add_permission(self):
-        """Check for permission to add"""
-        if not any('add' in item for item in self.get_permissions()):
-            raise PermissionDenied()
-
-    def check_edit_permission(self):
-        """Check for permission to change"""
-        if not any('change' in item for item in self.get_permissions()):
-            raise PermissionDenied()
-
-    def check_delete_permission(self):
-        """Check for permission to delete"""
-        if not any('delete' in item for item in self.get_permissions()):
-            raise PermissionDenied()
 
     def get(self, request, *args, **kwargs):
         # Check if the user has the view permission
