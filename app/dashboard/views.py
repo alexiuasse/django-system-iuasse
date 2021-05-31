@@ -9,6 +9,7 @@ from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import Permission
 from app.base_views import MyPermissionMixin
+from service.utils import dashboard_stats
 
 from .forms import *
 from .models import *
@@ -47,6 +48,8 @@ class DashboardView(LoginRequiredMixin, MyPermissionMixin, View):
             'form': self.form,
             'show_modal': self.show_modal,
         }
+
+        context.update(dashboard_stats())
 
         return context
 

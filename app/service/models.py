@@ -4,6 +4,7 @@ from django.conf import settings
 from dateutil.relativedelta import relativedelta
 from datetime import date
 from django.urls import reverse_lazy
+from django.utils.timezone import now
 
 
 class TypeOfService(models.Model):
@@ -94,6 +95,7 @@ class Domain(models.Model):
     link = models.TextField(verbose_name=_("Link"))
     acquisition_date = models.DateField(verbose_name=_("Acquisition Date"),
                                         help_text=_("Date that the domain was buyed."))
+    active = models.BooleanField(_("Active"), default=True)
     # The contract is ManyToManyField because the same domain can have multiple
     # contracts over time, this occurs for example when a contract has expired
     # and then a new one is contracted.

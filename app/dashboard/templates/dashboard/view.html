@@ -21,7 +21,24 @@
 {% endblock page_title_actions_items %}
 
 {% block page_body %}
-
+<div class="row row-deck row-cards">
+    {% if service %}
+    <div class="col-lg-6">
+        <div class="row row-cards">
+            {% for k,v in service.row_deck_top.items  %}
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body p-2 text-center">
+                        <div class="h1 m-0">{{v.subtitle}}</div>
+                        <div class="text-muted mb-3">{{v.title}}</div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</div>
 {% include './modal.html' %}
 {% endblock page_body %}
 
