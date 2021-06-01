@@ -1,4 +1,5 @@
 from django_tables2 import tables, CheckBoxColumn
+from django.utils.safestring import mark_safe
 
 from .models import *
 
@@ -21,6 +22,10 @@ class TypeOfServiceTable(tables.Table):
         per_page = 20
         sequence = ('selection', '...')
         exclude = ['created_at', 'updated_at']
+
+    @staticmethod
+    def render_color(value):
+        return mark_safe(f"<span class='badge' style='background-color: {value}'>{value}</span>")
 
 
 class DomainTable(tables.Table):

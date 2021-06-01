@@ -26,4 +26,5 @@ urlpatterns = [
     path('payment/status/', include(payment_status_patterns)),
     path('type/payment/', include(type_of_payment_patterns)),
     path('cost/center/', include(cost_center_patterns)),
+    path('dashboard/data/chart/', financial_data_chart),
 ]

@@ -162,6 +162,8 @@ CONTACT_EMAIL = "alexiuasse@gmail.com"
 SOURCE_CODE_LINK = "https://github.com/alexiuasse/django-system-iuasse"
 
 MONEY_SYMBOL = "R$"
+CHART_MONTHS_LABELS = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai',
+                       'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
 
 DEFAULT_DECIMAL_PLACES = 2
 DEFAULT_MAX_DIGITS = 11

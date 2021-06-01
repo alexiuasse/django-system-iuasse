@@ -18,6 +18,7 @@ class TypeOfServiceForm(forms.ModelForm):
         self.helper.form_tag = False
         self.helper.form_class = 'form-control'
         self.fields['id'].widget = forms.HiddenInput()
+        self.fields['color'].widget = forms.TextInput(attrs={'type': 'color'})
 
     class Meta:
         model = TypeOfService
@@ -27,9 +28,6 @@ class TypeOfServiceForm(forms.ModelForm):
 class DomainForm(forms.ModelForm):
 
     id = forms.IntegerField(initial=0)
-    acquisition_date = forms.DateField(localize=True, required=False,
-                                       widget=forms.TextInput(
-                                           attrs={"data-mask": "00/00/0000", "data-mask-visible": True, "placeholder": "00/00/0000", "autocomplete": "off"}))
 
     layout = Layout(
         Div(
@@ -56,6 +54,7 @@ class DomainForm(forms.ModelForm):
         model = Domain
         widgets = {
             'link': forms.Textarea(attrs={"rows": 1, "data-bs-toggle": "autosize", "style": "overflow: hidden; overflow-wrap: break-word; resize: none;"}),
+            'acquisition_date': forms.DateInput(attrs={"data-mask": "00/00/0000", "data-mask-visible": True, "placeholder": "00/00/0000", "autocomplete": "off"}),
         }
         fields = '__all__'
 
@@ -63,9 +62,6 @@ class DomainForm(forms.ModelForm):
 class ContractForm(forms.ModelForm):
 
     id = forms.IntegerField(initial=0)
-    start_date = forms.DateField(localize=True, required=False,
-                                 widget=forms.TextInput(
-                                     attrs={"data-mask": "00/00/0000", "data-mask-visible": True, "placeholder": "00/00/0000", "autocomplete": "off"}))
 
     layout = Layout(
         Div(
@@ -98,6 +94,7 @@ class ContractForm(forms.ModelForm):
         model = Contract
         widgets = {
             'description': forms.Textarea(attrs={"rows": 1, "data-bs-toggle": "autosize", "style": "overflow: hidden; overflow-wrap: break-word; resize: none;"}),
+            'start_date': forms.DateInput(attrs={"data-mask": "00/00/0000", "data-mask-visible": True, "placeholder": "00/00/0000", "autocomplete": "off"}),
         }
         fields = '__all__'
 
@@ -115,4 +112,7 @@ class WebServiceForm(forms.ModelForm):
 
     class Meta:
         model = WebService
+        widgets = {
+            'date': forms.DateInput(attrs={"data-mask": "00/00/0000", "data-mask-visible": True, "placeholder": "00/00/0000", "autocomplete": "off"}),
+        }
         fields = '__all__'

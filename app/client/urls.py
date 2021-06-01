@@ -16,4 +16,5 @@ occupation_patterns = ([
 urlpatterns = [
     path('client/', include(client_patterns)),
     path('occupation/', include(occupation_patterns)),
+    path('dashboard/new/client/data/chart/', new_client_data_chart),
 ]

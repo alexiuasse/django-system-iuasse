@@ -1,4 +1,5 @@
 from django import forms
+from django.utils import timezone
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Div, Layout, Row, Field
 
@@ -24,9 +25,6 @@ class OccupationForm(forms.ModelForm):
 class ClientForm(forms.ModelForm):
 
     id = forms.IntegerField(initial=0)
-    birthday = forms.DateField(localize=True, required=False,
-                               widget=forms.TextInput(
-                                   attrs={"data-mask": "00/00/0000", "data-mask-visible": True, "placeholder": "00/00/0000", "autocomplete": "off"}))
 
     layout = Layout(
         Div(
@@ -40,7 +38,10 @@ class ClientForm(forms.ModelForm):
                 Field('phone', wrapper_class="col-md-6 col-sm-12"),
                 Field('birthday', wrapper_class="col-md-6 col-sm-12"),
             ),
-            Field('occupation'),
+            Row(
+                Field('occupation', wrapper_class="col-md-8 col-sm-12"),
+                Field('date', wrapper_class="col-md-4 col-sm-12"),
+            ),
         ),
     )
 
@@ -50,12 +51,12 @@ class ClientForm(forms.ModelForm):
         self.helper.form_tag = False
         self.helper.layout = self.layout
         self.helper.form_class = 'form-control'
+        self.fields['date'].initial = timezone.now()
 
     def clean_phone(self):
         data = self.cleaned_data['phone']
         if data == "(__) _ ____-____":
             data = ""
-        # int("".join(filter(str.isdigit, data)))
         return data
 
     class Meta:
@@ -63,6 +64,7 @@ class ClientForm(forms.ModelForm):
         widgets = {
             'address': forms.Textarea(attrs={"rows": 1, "data-bs-toggle": "autosize", "style": "overflow: hidden; overflow-wrap: break-word; resize: none;"}),
             'phone': forms.TextInput(attrs={"data-mask": "(00) 0 0000-0000", "data-mask-visible": True, "placeholder": "(00) 0 0000-0000", "autocomplete": "off"}),
-            # 'birthday': forms.TextInput(attrs={"data-mask": "00/00/0000", "data-mask-visible": True, "placeholder": "00/00/0000", "autocomplete": "off"}),
+            'date': forms.DateInput(attrs={"data-mask": "00/00/0000", "data-mask-visible": True, "placeholder": "00/00/0000", "autocomplete": "off"}),
+            'birthday': forms.DateInput(attrs={"data-mask": "00/00/0000", "data-mask-visible": True, "placeholder": "00/00/0000", "autocomplete": "off"})
         }
         fields = '__all__'

@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext as _
 from django.conf import settings
+from django.utils import timezone
 from dateutil.relativedelta import relativedelta
 from datetime import date
 from django.urls import reverse_lazy
@@ -18,6 +19,7 @@ class TypeOfService(TimeStampMixin):
                             null=False)
     active = models.BooleanField(verbose_name=_("Active"),
                                  default=True)
+    color = models.CharField(_("Color"), default="#ffffff", max_length=7)
 
     def __str__(self) -> str:
         return "{}".format(self.name)
@@ -45,6 +47,11 @@ class WebService(TimeStampMixin):
     contract = models.ManyToManyField("service.Contract",
                                       blank=True,
                                       verbose_name=_("Contract"))
+    date = models.DateField(
+        verbose_name=_("Date"),
+        default=timezone.now,
+        help_text=_("This date is used for statistics, build charts. "),
+    )
 
     def __str__(self) -> str:
         return "{} - {}".format(self.client, self.type_of_service)

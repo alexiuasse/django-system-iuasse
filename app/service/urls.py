@@ -26,4 +26,8 @@ urlpatterns = [
     path('domain/', include(domain_patterns)),
     path('contract/', include(contract_patterns)),
     path('web/service/', include(web_service_patterns)),
+    path('dashboard/web/service/data/chart/', webservice_data_chart,
+         name='webservice-data-chart'),
+    path('dashboard/domain/data/chart/', domain_data_chart,
+         name='domain-data-chart'),
 ]

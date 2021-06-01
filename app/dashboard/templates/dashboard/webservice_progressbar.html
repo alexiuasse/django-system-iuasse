@@ -1,0 +1,23 @@
+<div class="col-12">
+    <div class="card">
+        <div class="card-body">
+            <p class="mb-3">{{webservice_progressbars.name}} <strong>{{webservice_progressbars.count}}</strong></p>
+            <div class="progress progress-separated mb-3">
+                {% for k,v in webservice_progressbars.services.items %}
+                <div class="progress-bar" role="progressbar"
+                    style="width: {{v.percentage}}; background-color: {{v.color}};">
+                </div>
+                {% endfor %}
+            </div>
+            <div class="row">
+                {% for k,v in webservice_progressbars.services.items %}
+                <div class="col-auto d-flex align-items-center pe-2">
+                    <span class="legend me-2" style="background-color: {{v.color}}"></span>
+                    <span>{{k}}</span>
+                    <span class="d-none d-md-inline d-lg-none d-xxl-inline ms-2 text-muted">{{v.count}}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from django.utils.translation import gettext as _
 from django.urls import reverse_lazy
 from app.models import TimeStampMixin
@@ -79,6 +80,11 @@ class Client(TimeStampMixin):
                                    null=True,
                                    blank=True,
                                    verbose_name=_("Occupation"))
+    date = models.DateField(
+        verbose_name=_("Date"),
+        default=timezone.now,
+        help_text=_("This date is used for statistics, build charts. "),
+    )
 
     def __str__(self) -> str:
         return self.name

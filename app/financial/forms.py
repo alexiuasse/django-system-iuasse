@@ -58,9 +58,6 @@ class CostCenterForm(forms.ModelForm):
 class FinancialReleaseForm(forms.ModelForm):
 
     id = forms.IntegerField(initial=0)
-    date = forms.DateField(localize=True, required=False,
-                           widget=forms.TextInput(
-                               attrs={"data-mask": "00/00/0000", "data-mask-visible": True, "placeholder": "00/00/0000", "autocomplete": "off"}))
 
     layout = Layout(
         Div(
@@ -90,4 +87,7 @@ class FinancialReleaseForm(forms.ModelForm):
 
     class Meta:
         model = FinancialRelease
+        widgets = {
+            'date': forms.DateInput(attrs={"data-mask": "00/00/0000", "data-mask-visible": True, "placeholder": "00/00/0000", "autocomplete": "off"}),
+        }
         fields = '__all__'

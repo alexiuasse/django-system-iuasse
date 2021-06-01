@@ -22,30 +22,38 @@
 
 {% block page_body %}
 <div class="row row-deck row-cards">
-    {% if service %}
+    {% if client %}
+    {% include './top_cards_w_graph.html' with ctx=client chart_id="chart-new-clients" %}
+    {% endif %}
+    {% if domain %}
+    {% include './top_cards_w_graph.html' with ctx=domain chart_id="chart-domain" %}
+    {% endif %}
+    {% if financial %}
+    {% include './top_cards_w_graph.html' with ctx=financial chart_id="chart-financial" %}
+    {% endif %}
     <div class="col-lg-6">
         <div class="row row-cards">
-            {% for k,v in service.row_deck_top.items  %}
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-body p-2 text-center">
-                        <div class="h1 m-0">{{v.subtitle}}</div>
-                        <div class="text-muted mb-3">{{v.title}}</div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
+            {% include './webservice_graph.html' %}
+            {% if webservice_progressbars %}
+            {% include './webservice_progressbar.html' with webservice_progressbars=webservice_progressbars %}
+            {% endif %}
         </div>
     </div>
-    {% endif %}
+
+
 </div>
 {% include './modal.html' %}
 {% endblock page_body %}
 
 {% block javascript %}
+<script src="{% static 'base/dist/libs/apexcharts/dist/apexcharts.min.js' %}"></script>
 <script src="{% static 'base/dist/libs/jquery/jquery-3.6.0.min.js' %}"></script>
 <script>
     var showModal = "{{show_modal}}";
 </script>
 <script src="{% static 'dashboard/js/dashboard.js' %}"></script>
+<script src="{% static 'dashboard/js/webservice_data_chart.js' %}"></script>
+{% if client %}<script src="{% static 'dashboard/js/new_client_data_chart.js' %}"></script>{% endif %}
+{% if domain %}<script src="{% static 'dashboard/js/domain_data_chart.js' %}"></script>{% endif %}
+{% if financial %}<script src="{% static 'dashboard/js/financial_data_chart.js' %}"></script>{% endif %}
 {% endblock javascript %}
