@@ -18,8 +18,15 @@ def financial_dashboard_ctx():
         cost_center__liability=True,
     ).values('total_value').aggregate(total=Sum('total_value'))['total'] or 0
     total = asset_total - liability_total
-    icon = 'trending_up' if total > 0 else 'trending_down'
-    icon_class = 'text-success' if total > 0 else 'text-danger'
+    if total > 0:
+        icon = 'trending_up'
+        icon_class = 'text-success'
+    elif total < 0:
+        icon = 'trending_down'
+        icon_class = 'text-danger'
+    else:
+        icon = 'minus'
+        icon_class = 'text-yellow'
     return {
         'financial': {
             'title': _("Financial"),

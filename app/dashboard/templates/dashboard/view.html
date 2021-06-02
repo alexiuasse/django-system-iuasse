@@ -25,11 +25,14 @@
     {% if client %}
     {% include './top_cards_w_graph.html' with ctx=client chart_id="chart-new-clients" %}
     {% endif %}
+    {% if financial %}
+    {% include './top_cards_w_graph.html' with ctx=financial chart_id="chart-financial" %}
+    {% endif %}
     {% if domain %}
     {% include './top_cards_w_graph.html' with ctx=domain chart_id="chart-domain" %}
     {% endif %}
-    {% if financial %}
-    {% include './top_cards_w_graph.html' with ctx=financial chart_id="chart-financial" %}
+    {% if contract %}
+    {% include './top_cards_w_graph.html' with ctx=contract chart_id="chart-contract" %}
     {% endif %}
     <div class="col-lg-6">
         <div class="row row-cards">
@@ -56,4 +59,5 @@
 {% if client %}<script src="{% static 'dashboard/js/new_client_data_chart.js' %}"></script>{% endif %}
 {% if domain %}<script src="{% static 'dashboard/js/domain_data_chart.js' %}"></script>{% endif %}
 {% if financial %}<script src="{% static 'dashboard/js/financial_data_chart.js' %}"></script>{% endif %}
+{% if contract %}<script src="{% static 'dashboard/js/contract_data_chart.js' %}"></script>{% endif %}
 {% endblock javascript %}

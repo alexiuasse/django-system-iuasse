@@ -35,5 +35,20 @@ def domain_dashboard_ctx():
         'domain': {
             'title': _("Domain"),
             'count': Domain.objects.filter(acquisition_date__year=current_date.year).values('id').count(),
+            'icon': None,
+            'icon_class': None,
+        },
+    }
+
+
+def contract_dashboard_ctx():
+    """Return context data about contract"""
+    current_date = datetime.today()
+    return {
+        'contract': {
+            'title': _("Contract"),
+            'count': Contract.objects.filter(start_date__year=current_date.year).values('id').count(),
+            'icon': None,
+            'icon_class': None,
         },
     }

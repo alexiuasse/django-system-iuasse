@@ -166,3 +166,34 @@ def domain_data_chart(request):
     })
 
     return JsonResponse(data)
+
+
+@login_required
+@permission_required('service.view_contract')
+def contract_data_chart(request):
+    """
+    Return a JsonResponse with data to fullfill a chart.
+    The return data consists in a series with all contract divided.
+    If a month has nothing, so it will be sent 0.
+    """
+    current_date = datetime.today()
+    months = [i for i in range(1, 13)]
+    data = {
+        'series': [],
+        'labels': settings.CHART_MONTHS_LABELS,
+    }
+
+    contract_count = []
+    for month in months:
+        contract_count.append(
+            Contract.objects.filter(
+                start_date__month=month,
+                start_date__year=current_date.year,
+            ).values('id').count()
+        )
+    data['series'].append({
+        "name": _("Contract"),
+        "data": contract_count,
+    })
+
+    return JsonResponse(data)

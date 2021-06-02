@@ -30,4 +30,6 @@ urlpatterns = [
          name='webservice-data-chart'),
     path('dashboard/domain/data/chart/', domain_data_chart,
          name='domain-data-chart'),
+    path('dashboard/contract/data/chart/', contract_data_chart,
+         name='contract-data-chart'),
 ]

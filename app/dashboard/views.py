@@ -9,7 +9,7 @@ from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import Permission
 from app.base_views import MyPermissionMixin
-from service.utils import webservice_dashboard_progressbars_ctx, domain_dashboard_ctx
+from service.utils import webservice_dashboard_progressbars_ctx, domain_dashboard_ctx, contract_dashboard_ctx
 from client.utils import client_dashboard_ctx
 from financial.utils import financial_dashboard_ctx
 
@@ -55,6 +55,7 @@ class DashboardView(LoginRequiredMixin, MyPermissionMixin, View):
         context.update(client_dashboard_ctx())
         context.update(domain_dashboard_ctx())
         context.update(financial_dashboard_ctx())
+        context.update(contract_dashboard_ctx())
 
         return context
 

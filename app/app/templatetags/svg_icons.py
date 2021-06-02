@@ -81,6 +81,8 @@ def svg_icon(icon_name, extra_class=''):
 
         'trending_up': '<path stroke="none" d="M0 0h24v24H0z" fill="none"></path><polyline points="3 17 9 11 13 15 21 7"></polyline><polyline points="14 7 21 7 21 14"></polyline>',
 
+        'minus': '<path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="5" y1="12" x2="19" y2="12"></line>',
+
     }
 
     svg_tag = format_html(
