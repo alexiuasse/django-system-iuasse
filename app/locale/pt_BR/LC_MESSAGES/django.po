@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-31 11:55-0300\n"
+"POT-Creation-Date: 2021-06-02 19:27-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,45 +18,61 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: app/base_views.py:160
+#: app/base_views.py:199
 msgid "{} was created successfully"
 msgstr "{} foi criado com sucesso"
 
-#: app/base_views.py:179
+#: app/base_views.py:217
 msgid "{} was edited successfully"
 msgstr "{} foi editado com sucesso"
 
-#: app/base_views.py:189
+#: app/base_views.py:227
 #, fuzzy
 #| msgid "{} Clients deleted successfully"
 msgid "{} Client(s) deleted successfully"
 msgstr "{} Cliente(s) deletados com sucesso"
 
-#: client/models.py:11 client/models.py:60 financial/models.py:14
-#: financial/models.py:30 financial/models.py:49 service/models.py:14
-#: service/models.py:92
+#: app/models.py:7
+msgid "Created At"
+msgstr "Criado Em"
+
+#: app/models.py:9
+msgid "Updated At"
+msgstr "Atualizado Em"
+
+#: client/models.py:13 client/models.py:62 financial/models.py:15
+#: financial/models.py:31 financial/models.py:50 service/models.py:16
+#: service/models.py:104 service/models.py:167
 msgid "Name"
 msgstr "Nome"
 
-#: client/models.py:62
+#: client/models.py:64
 msgid "E-mail"
 msgstr "E-mail"
 
-#: client/models.py:65
+#: client/models.py:67
 msgid "Address"
 msgstr "Endereço"
 
-#: client/models.py:69
+#: client/models.py:71
 msgid "Phone"
 msgstr "Telefone"
 
-#: client/models.py:73
+#: client/models.py:75
 msgid "Birthday"
 msgstr "Aniversário"
 
-#: client/models.py:80 client/views.py:18 templates/navbar_vertical.html:52
+#: client/models.py:82 client/views.py:23 templates/navbar_vertical.html:52
 msgid "Occupation"
 msgstr "Ocupação"
+
+#: client/models.py:84 financial/models.py:80 service/models.py:51
+msgid "Date"
+msgstr "Data"
+
+#: client/models.py:86 service/models.py:53
+msgid "This date is used for statistics, build charts. "
+msgstr "Esta data é usada para estatísticas, construir gráficos. "
 
 #: client/templates/client/modal.html:9 client/templates/client/view.html:26
 msgid "New Client"
@@ -64,6 +80,7 @@ msgstr "Novo Cliente"
 
 #: client/templates/client/modal.html:16
 #: client/templates/occupation/modal.html:16
+#: dashboard/templates/dashboard/modal.html:16
 #: financial/templates/cost_center/modal.html:16
 #: financial/templates/financial_release/modal.html:16
 #: financial/templates/payment_status/modal.html:16
@@ -77,6 +94,7 @@ msgstr "Fechar"
 
 #: client/templates/client/modal.html:17
 #: client/templates/occupation/modal.html:17
+#: dashboard/templates/dashboard/modal.html:17
 #: financial/templates/cost_center/modal.html:17
 #: financial/templates/financial_release/modal.html:17
 #: financial/templates/payment_status/modal.html:17
@@ -151,7 +169,6 @@ msgstr "Cancelar"
 #: service/templates/type_of_service/view.html:82
 #: service/templates/webservice/modal.html:47
 #: service/templates/webservice/view.html:84
-#, fuzzy
 #| msgid "Delete "
 msgid "Delete"
 msgstr "Excluir"
@@ -166,10 +183,9 @@ msgstr "Excluir"
 #: service/templates/domain/modal.html:49
 #: service/templates/type_of_service/modal.html:49
 #: service/templates/webservice/modal.html:49
-#, fuzzy
 #| msgid "Clients"
 msgid "client(s)"
-msgstr "Clientes"
+msgstr "cliente(s)"
 
 #: client/templates/client/view.html:47
 #: client/templates/occupation/view.html:45
@@ -181,10 +197,9 @@ msgstr "Clientes"
 #: service/templates/domain/view.html:47
 #: service/templates/type_of_service/view.html:45
 #: service/templates/webservice/view.html:47
-#, fuzzy
 #| msgid "Search…"
 msgid "Search"
-msgstr "Procurar..."
+msgstr "Procurar"
 
 #: client/templates/client/view.html:52
 #: client/templates/occupation/view.html:50
@@ -221,69 +236,132 @@ msgstr "Nova Ocupação"
 msgid "occupation(s)? What you've done cannot be undone."
 msgstr "ocupação(ões)? Essa operação não pode ser desfeita."
 
-#: client/views.py:31 service/models.py:32
+#: client/utils.py:12 templates/navbar_vertical.html:44
+#: templates/navbar_vertical.html:49
+msgid "Clients"
+msgstr "Clientes"
+
+#: client/views.py:36 client/views.py:52 service/models.py:35
 msgid "Client"
 msgstr "Cliente"
 
-#: dashboard/templates/dashboard.html:6 dashboard/views.py:8
-#: templates/navbar_vertical.html:32
+#: dashboard/forms.py:18 dashboard/templates/dashboard/view.html:55
+msgid "Days"
+msgstr "Dias"
+
+#: dashboard/models.py:9
+#| msgid "Contracts"
+msgid "Contract Warning Days"
+msgstr "Aviso Contrato Dias"
+
+#: dashboard/models.py:11
+msgid "Days that should be considered to warning a contract expired"
+msgstr "Dias que devem ser considerados para avisar um contrato expirado"
+
+#: dashboard/models.py:14
+msgid "Month Earn Goal"
+msgstr "Meta de Ganho Mensal"
+
+#: dashboard/models.py:18
+msgid "Year Earn Goal"
+msgstr "Meta de Ganho Anual"
+
+#: dashboard/templates/dashboard/financial_goals.html:28
+#: dashboard/templates/dashboard/financial_goals.html:51
+#| msgid "Confirm Delete"
+msgid "Complete"
+msgstr "Completo"
+
+#: dashboard/templates/dashboard/modal.html:9
+msgid "Change Dashboard Settings"
+msgstr "Mudar Configuração Dashboard"
+
+#: dashboard/templates/dashboard/top_cards_w_graph.html:10
+msgid "Year"
+msgstr "Ano"
+
+#: dashboard/templates/dashboard/view.html:55
+msgid "Contract Warning Expiration In"
+msgstr "Aviso Contrato Expiração Em"
+
+#: dashboard/templates/dashboard/webservice_graph.html:5 service/models.py:226
+#: service/utils.py:22 service/views.py:87 templates/navbar_vertical.html:69
+msgid "Web Service"
+msgstr "Serviço Web"
+
+#: dashboard/views.py:26 templates/navbar_vertical.html:32
 msgid "Dashboard"
 msgstr "Dashboard"
 
-#: financial/models.py:18 financial/models.py:34 service/models.py:18
+#: dashboard/views.py:66
+#| msgid "Month"
+msgid "Month Goal"
+msgstr "Meta Mensal"
+
+#: dashboard/views.py:67
+#| msgid "Month"
+msgid "Month Earn"
+msgstr "Ganho Mensal"
+
+#: dashboard/views.py:74
+msgid "Year Goal"
+msgstr "Meta Anual"
+
+#: dashboard/views.py:75
+msgid "Year Earn"
+msgstr "Ganho Anual"
+
+#: dashboard/views.py:128
+msgid "Dashboard Settings was edited successfully"
+msgstr "Configurações do Dashboard foram alterados com sucesso"
+
+#: financial/models.py:19 financial/models.py:35 service/models.py:20
+#: service/models.py:109
 msgid "Active"
 msgstr "Ativo"
 
-#: financial/models.py:53
+#: financial/models.py:54 financial/views.py:103
 msgid "Asset"
 msgstr "Ativo"
 
-#: financial/models.py:54
+#: financial/models.py:55
 msgid "Liability"
 msgstr "Passivo"
 
-#: financial/models.py:65
+#: financial/models.py:66
 msgid "Total Value"
 msgstr "Valor Total"
 
-#: financial/models.py:67
+#: financial/models.py:68
 msgid "If the type of payment is parceled out, this is the real total!"
 msgstr "Se o tipo de pagamento é parcelado, esse é o valor real!"
 
-#: financial/models.py:71 templates/navbar_vertical.html:100
+#: financial/models.py:72 templates/navbar_vertical.html:102
 msgid "Type of Payment"
 msgstr "Tipo de Pagamento"
 
-#: financial/models.py:73
+#: financial/models.py:74
 msgid "Total Parcels"
 msgstr "Parcelas Totais"
 
-#: financial/models.py:78 financial/views.py:45
-#: templates/navbar_vertical.html:103
+#: financial/models.py:79 financial/views.py:49
+#: templates/navbar_vertical.html:105
 msgid "Cost Center"
 msgstr "Centro de Custo"
 
-#: financial/models.py:79
-msgid "Date"
-msgstr "Data"
-
-#: financial/models.py:81 service/models.py:163
+#: financial/models.py:82 service/models.py:182
 msgid "Attachment"
 msgstr "Anexo"
 
 #: financial/templates/cost_center/modal.html:9
 #: financial/templates/cost_center/view.html:24
-#, fuzzy
-#| msgid "Cost Center"
 msgid "New Cost Center"
-msgstr "Centro de Custo"
+msgstr "novo Centro de Custo"
 
 #: financial/templates/cost_center/modal.html:35
 #: financial/templates/payment_status/modal.html:35
-#, fuzzy
-#| msgid "client(s)? What you've done cannot be undone."
 msgid "payment status(s)? What you've done cannot be undone."
-msgstr "cliente(s)? Essa operação não pode ser desfeita."
+msgstr "status de pagamento(s)? Essa operação não pode ser desfeita."
 
 #: financial/templates/financial_release/modal.html:9
 #: financial/templates/financial_release/view.html:26
@@ -305,120 +383,138 @@ msgid "New Type Of Payment"
 msgstr "Novo Tipo de Pagamento"
 
 #: financial/templates/type_of_payment/modal.html:35
-#, fuzzy
-#| msgid "client(s)? What you've done cannot be undone."
 msgid "type of payment(s)? What you've done cannot be undone."
-msgstr "cliente(s)? Essa operação não pode ser desfeita."
+msgstr "tipo de pagamento(s)? Essa operação não pode ser desfeita."
 
-#: financial/views.py:19 templates/navbar_vertical.html:97
+#: financial/utils.py:32 templates/navbar_vertical.html:90
+msgid "Financial"
+msgstr "Financeiro"
+
+#: financial/views.py:23 templates/navbar_vertical.html:99
 msgid "Payment Status"
 msgstr "Status de Pagamento"
 
-#: financial/views.py:32
-#, fuzzy
-#| msgid "Type of Payment"
+#: financial/views.py:36
 msgid "Type Of Payment"
 msgstr "Tipo de Pagamento"
 
-#: financial/views.py:58 templates/navbar_vertical.html:94
+#: financial/views.py:62 templates/navbar_vertical.html:96
 msgid "Financial Release"
 msgstr "Lançamento Financeiro"
 
-#: service/forms.py:81
+#: financial/views.py:104
+msgid "Liablitity"
+msgstr "Passivo"
+
+#: service/forms.py:88
 msgid "Month"
 msgstr "Mês"
 
-#: service/models.py:36
+#: service/models.py:22
+msgid "Color"
+msgstr "Cor"
+
+#: service/models.py:39
 msgid "Type of Service"
 msgstr "Tipo de Serviço"
 
-#: service/models.py:40 service/views.py:32 templates/navbar_vertical.html:74
+#: service/models.py:43 service/models.py:223 service/utils.py:36
+#: service/views.py:37 service/views.py:164 templates/navbar_vertical.html:75
 msgid "Domain"
 msgstr "Domínio"
 
-#: service/models.py:46 service/models.py:102 service/views.py:57
-#: templates/navbar_vertical.html:77
+#: service/models.py:49 service/models.py:115 service/tables.py:107
+#: service/utils.py:49 service/views.py:62 service/views.py:195
+#: templates/navbar_vertical.html:78
 msgid "Contract"
 msgstr "Contrato"
 
-#: service/models.py:94
+#: service/models.py:106
 msgid "Link"
 msgstr "Link"
 
-#: service/models.py:95
+#: service/models.py:107
 msgid "Acquisition Date"
 msgstr "Data de Aquisição"
 
-#: service/models.py:96
+#: service/models.py:108
 msgid "Date that the domain was buyed."
 msgstr "Data que o domínio foi comprado."
 
-#: service/models.py:154
+#: service/models.py:169
+msgid "A friendly name to easy remember."
+msgstr "Um nome amigável para lembrar fácil."
+
+#: service/models.py:170
 msgid "Value"
 msgstr "Valor"
 
-#: service/models.py:157
+#: service/models.py:173
 msgid "Start Date"
 msgstr "Data de Início"
 
-#: service/models.py:158
+#: service/models.py:174
 msgid "Date that the contract was signed/agreed."
 msgstr "Data que o contrato foi assinado/acordado."
 
-#: service/models.py:159
+#: service/models.py:175
+msgid "End Date"
+msgstr "Data de Fim"
+
+#: service/models.py:178
 msgid "Expiration"
 msgstr "Expiração"
 
-#: service/models.py:161
+#: service/models.py:180
 msgid "Expiration of the contract in months."
 msgstr "Expiração do contrato em meses."
 
-#: service/models.py:162
+#: service/models.py:181
 msgid "Description"
 msgstr "Descrição"
 
+#: service/models.py:227
+msgid "None"
+msgstr "Nenhum"
+
+#: service/tables.py:82
+msgid "Reference"
+msgstr "Referência"
+
+#: service/tables.py:83
+msgid "Expiration (Month)"
+msgstr "Expiração (Mês)"
+
 #: service/templates/contract/modal.html:9
 #: service/templates/contract/view.html:24
-#| msgid "Contract"
 msgid "New Contract"
 msgstr "Novo Contrato"
 
 #: service/templates/contract/modal.html:35
-#| msgid "client(s)? What you've done cannot be undone."
 msgid "contract(s)? What you've done cannot be undone."
 msgstr "contrato(s)? Essa operação não pode ser desfeita."
 
 #: service/templates/domain/modal.html:9 service/templates/domain/view.html:26
-#| msgid "Domain"
 msgid "New Domain"
 msgstr "Novo Domínio"
 
 #: service/templates/domain/modal.html:35
-#| msgid "occupation(s)? What you've done cannot be undone."
 msgid "domain(s)? What you've done cannot be undone."
 msgstr "domínio(s)? Essa operação não pode ser desfeita."
 
 #: service/templates/type_of_service/modal.html:9
 #: service/templates/type_of_service/view.html:24
-#| msgid "Type of Service"
 msgid "New Type Of Service"
 msgstr "Novo Tipo de Serviço"
 
 #: service/templates/webservice/modal.html:9
 #: service/templates/webservice/view.html:26
-#| msgid "Type of Service"
 msgid "New Web Service"
 msgstr "Novo Serviço Web"
 
-#: service/views.py:19 templates/navbar_vertical.html:71
-#| msgid "Type of Service"
+#: service/views.py:24 templates/navbar_vertical.html:72
 msgid "Type Of Service"
 msgstr "Tipo De Serviço"
-
-#: service/views.py:82 templates/navbar_vertical.html:68
-#| msgid "Service"
-msgid "Web Service"
-msgstr "Serviço Web"
 
 #: templates/confirm_delete.html:7
 msgid "Confirm Delete"
@@ -488,28 +584,17 @@ msgstr "Usuário ou Senha errado"
 msgid "Login"
 msgstr "Entrar"
 
-#: templates/navbar_vertical.html:44 templates/navbar_vertical.html:49
-msgid "Clients"
-msgstr "Clientes"
-
-#: templates/navbar_vertical.html:63
+#: templates/navbar_vertical.html:64
 msgid "Service"
 msgstr "Serviço"
 
-#: templates/navbar_vertical.html:89
-msgid "Financial"
-msgstr "Financeiro"
-
-#: templates/navbar_vertical.html:113
+#: templates/navbar_vertical.html:115
 msgid "Admin"
 msgstr "Admin"
 
-#: templates/navbar_vertical.html:123
+#: templates/navbar_vertical.html:125
 msgid "Error"
 msgstr "Erro"
-
-#~ msgid "Contracts"
-#~ msgstr "Contratos"
 
 #~ msgid "One Page"
 #~ msgstr "Uma Página"
