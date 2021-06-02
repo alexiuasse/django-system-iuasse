@@ -16,7 +16,7 @@ class DashboardSettingsForm(forms.ModelForm):
             Field('id'),
             AppendedText(
                 'contract_warning_days', _("Days"),
-                wrapper_class="col-lg-12 col-sm-12"
+                wrapper_class="col-lg-6 col-sm-12"
             ),
             Row(
                 PrependedText(
