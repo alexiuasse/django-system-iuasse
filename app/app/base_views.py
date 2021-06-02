@@ -105,8 +105,8 @@ class MyViewCreateUpdateDelete(LoginRequiredMixin, MyPermissionMixin, View):
                     self.__class__.__name__)
             )
 
-        if self.form == None:
-            self.form = self.form_class(None, prefix=self.form_prefix)
+        # if self.form == None:
+        #     self.reset_form()
 
         context = {
             'page_title': self.page_title,
@@ -139,9 +139,19 @@ class MyViewCreateUpdateDelete(LoginRequiredMixin, MyPermissionMixin, View):
         """
         return self.request.POST.copy()
 
-    # def set_form(self):
-    #     """Setting the form with the prefix provided"""
-    #     self.form = self.form_class(prefix=self.form_prefix)
+    def set_form(self):
+        """Set the form with instance and prefix."""
+        self.form = self.form_class(
+            instance=self.object,
+            prefix=self.form_prefix
+        )
+
+    def reset_form(self):
+        """Reset the form passing None and prefix."""
+        self.form = self.form_class(
+            None,
+            prefix=self.form_prefix
+        )
 
     def set_filter(self):
         """Set the filter"""
@@ -179,11 +189,11 @@ class MyViewCreateUpdateDelete(LoginRequiredMixin, MyPermissionMixin, View):
         """Create a new object."""
         self.check_add_permission()
         self.form = self.form_class(
-            self.get_POST_data(), prefix=self.form_prefix
+            self.get_POST_data(),
+            prefix=self.form_prefix
         )
         self.form_valid()
-        # if create okay, reset the form
-        self.form = self.form_class(None, prefix=self.form_prefix)
+        self.reset_form()
         messages.success(
             self.request,
             _("{} was created successfully").format(self.object)
@@ -201,8 +211,7 @@ class MyViewCreateUpdateDelete(LoginRequiredMixin, MyPermissionMixin, View):
             prefix=self.form_prefix,
         )
         self.form_valid()
-        # if update okay, reset the form
-        self.form = self.form_class(None, prefix=self.form_prefix)
+        self.reset_form()
         messages.success(
             self.request,
             _("{} was edited successfully").format(self.object)
@@ -229,6 +238,9 @@ class MyViewCreateUpdateDelete(LoginRequiredMixin, MyPermissionMixin, View):
         export_format = request.GET.get("_export", None)
         if TableExport.is_valid_format(export_format):
             return self.export_table(export_format)
+        # check if form is None, if so set it
+        if self.form == None:
+            self.set_form()
         return render(request, self.template_name, self.get_context_data())
 
     def post(self, request, *args, **kwargs):

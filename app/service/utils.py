@@ -61,3 +61,8 @@ def contract_warning_dashboard_queryset(days):
         end_date=current_date + relativedelta(days=days)
     )
     return contracts
+
+
+def get_single_contracts():
+    """Return contracts that has nothing linked."""
+    return Contract.objects.filter(webservice=None, domain=None)

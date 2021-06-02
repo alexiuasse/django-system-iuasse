@@ -65,7 +65,11 @@ class WebService(TimeStampMixin):
     def get_delete_url(self):
         return reverse_lazy(f'{self._meta.app_label}:{self._meta.model_name}:delete', kwargs={'pk': self.pk})
 
-    @staticmethod
+    @property
+    def contracts(self):
+        return ', '.join(c.__str__() for c in self.contract.all())
+
+    @ staticmethod
     def get_exclude_fields():
         """
             Fields of the current model that is marked to get excluded from visualization.
@@ -87,7 +91,7 @@ class WebService(TimeStampMixin):
 
         exclude = self.get_exclude_fields()
         data = dict([(field.verbose_name, getattr(self, field.name))
-                    for field in self._meta.fields if field.name not in exclude])
+                     for field in self._meta.fields if field.name not in exclude])
         data.update(self.get_add_fields())
         return data
 
@@ -122,7 +126,7 @@ class Domain(TimeStampMixin):
     def get_delete_url(self):
         return reverse_lazy(f'{self._meta.app_label}:{self._meta.model_name}:delete', kwargs={'pk': self.pk})
 
-    @staticmethod
+    @ staticmethod
     def get_exclude_fields():
         """
             Fields of the current model that is marked to get excluded from visualization.
@@ -144,7 +148,7 @@ class Domain(TimeStampMixin):
 
         exclude = self.get_exclude_fields()
         data = dict([(field.verbose_name, getattr(self, field.name))
-                    for field in self._meta.fields if field.name not in exclude])
+                     for field in self._meta.fields if field.name not in exclude])
         data.update(self.get_add_fields())
         return data
 
@@ -160,13 +164,17 @@ class Contract(TimeStampMixin):
         The end date can be generated using start date and expiration (months).
     """
 
+    name = models.CharField(verbose_name=_("Name"),
+                            max_length=32,
+                            help_text=_("A friendly name to easy remember."))
     value = models.DecimalField(verbose_name=_("Value"),
                                 max_digits=settings.DEFAULT_MAX_DIGITS,
                                 decimal_places=settings.DEFAULT_DECIMAL_PLACES)
     start_date = models.DateField(verbose_name=_("Start Date"),
                                   help_text=_("Date that the contract was signed/agreed."))
-    end_date = models.DateField(verbose_name=_(
-        "End Date"), null=True, blank=True)
+    end_date = models.DateField(verbose_name=_("End Date"),
+                                null=True,
+                                blank=True)
     expiration = models.IntegerField(verbose_name=_("Expiration"),
                                      default=12,
                                      help_text=_("Expiration of the contract in months."))
@@ -181,7 +189,7 @@ class Contract(TimeStampMixin):
         super(Contract, self).save(*args, **kwargs)
 
     def __str__(self) -> str:
-        return "{}/{} {} {}".format(self.start_date, self.expiration, settings.MONEY_SYMBOL, self.value)
+        return self.name
 
     def expiration_date(self):
         """
@@ -199,7 +207,7 @@ class Contract(TimeStampMixin):
 
     def is_expired(self):
         """
-            Check if the contract is expired. 
+            Check if the contract is expired.
             (start_date + relativedelta(months=expiration)) < today
         """
 
@@ -227,7 +235,7 @@ class Contract(TimeStampMixin):
     def get_delete_url(self):
         return reverse_lazy(f'{self._meta.app_label}:{self._meta.model_name}:delete', kwargs={'pk': self.pk})
 
-    @staticmethod
+    @ staticmethod
     def get_exclude_fields():
         """
             Fields of the current model that is marked to get excluded from visualization.
@@ -249,6 +257,6 @@ class Contract(TimeStampMixin):
 
         exclude = self.get_exclude_fields()
         data = dict([(field.verbose_name, getattr(self, field.name))
-                    for field in self._meta.fields if field.name not in exclude])
+                     for field in self._meta.fields if field.name not in exclude])
         data.update(self.get_add_fields())
         return data

@@ -104,6 +104,8 @@ class WebServiceTable(tables.Table):
         exclude_from_export=True
     )
 
+    contract = Column(verbose_name=_("Contract"), accessor="contracts")
+
     class Meta:
         model = WebService
         attrs = {
