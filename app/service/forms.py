@@ -68,7 +68,7 @@ class ContractForm(forms.ModelForm):
             Field('id', type='hidden'),
             Row(
                 PrependedText(
-                    settings.MONEY_SYMBOL, 'value', wrapper_class="col-lg-6 col-sm-12"
+                    'value', settings.MONEY_SYMBOL, wrapper_class="col-lg-6 col-sm-12"
                 ),
                 Field('start_date', wrapper_class="col-lg-6 col-sm-12"),
             ),

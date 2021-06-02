@@ -30,8 +30,28 @@ def financial_dashboard_ctx():
     return {
         'financial': {
             'title': _("Financial"),
-            'count': "{} {}".format(settings.MONEY_SYMBOL, total),
+            'count': None,
+            'money': total,
             'icon': icon,
             'icon_class': icon_class,
         },
     }
+
+
+def get_month_revenue():
+    """Return current month total revenue"""
+    current_date = datetime.today()
+    return FinancialRelease.objects.filter(
+        date__month=current_date.month,
+        date__year=current_date.year,
+        cost_center__asset=True,
+    ).values('total_value').aggregate(total=Sum('total_value'))['total'] or 0
+
+
+def get_year_revenue():
+    """Return current year total revenue"""
+    current_date = datetime.today()
+    return FinancialRelease.objects.filter(
+        date__year=current_date.year,
+        cost_center__asset=True,
+    ).values('total_value').aggregate(total=Sum('total_value'))['total'] or 0

@@ -35,8 +35,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     categories: dataLabels,
                 },
                 legend: {
-                    position: 'right',
-                    offsetY: 40
+                    position: 'bottom',
+                    // offsetY: 40
                 },
                 colors: dataColors,
             })).render();

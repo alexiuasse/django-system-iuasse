@@ -165,6 +165,8 @@ class Contract(TimeStampMixin):
                                 decimal_places=settings.DEFAULT_DECIMAL_PLACES)
     start_date = models.DateField(verbose_name=_("Start Date"),
                                   help_text=_("Date that the contract was signed/agreed."))
+    end_date = models.DateField(verbose_name=_(
+        "End Date"), null=True, blank=True)
     expiration = models.IntegerField(verbose_name=_("Expiration"),
                                      default=12,
                                      help_text=_("Expiration of the contract in months."))
@@ -173,6 +175,10 @@ class Contract(TimeStampMixin):
                                   upload_to="contracts",
                                   blank=True,
                                   null=True)
+
+    def save(self, *args, **kwargs):
+        self.end_date = self.expiration_date()
+        super(Contract, self).save(*args, **kwargs)
 
     def __str__(self) -> str:
         return "{}/{} {} {}".format(self.start_date, self.expiration, settings.MONEY_SYMBOL, self.value)
@@ -198,6 +204,19 @@ class Contract(TimeStampMixin):
         """
 
         return self.expiration_date() < date.today()
+
+    def get_reference(self):
+        """
+        Return Domain if this contract is set to domain or Service ir set to a service.
+        """
+
+        domain = self.domain_set.all().values('id').count()
+        if domain > 0:
+            return _("Domain")
+        webservice = self.webservice_set.all().values('id').count()
+        if webservice > 0:
+            return _("Web Service")
+        return _("None")
 
     def get_absolute_url(self):
         return reverse_lazy(f'{self._meta.app_label}:{self._meta.model_name}:view')

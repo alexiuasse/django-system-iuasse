@@ -52,3 +52,12 @@ def contract_dashboard_ctx():
             'icon_class': None,
         },
     }
+
+
+def contract_warning_dashboard_queryset(days):
+    """Return contracts that will get expired in the amount of days."""
+    current_date = datetime.today()
+    contracts = Contract.objects.filter(
+        end_date=current_date + relativedelta(days=days)
+    )
+    return contracts

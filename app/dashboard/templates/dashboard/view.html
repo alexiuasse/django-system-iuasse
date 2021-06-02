@@ -2,6 +2,7 @@
 {% load i18n %}
 {% load static %}
 {% load svg_icons %}
+{% load render_table from django_tables2 %}
 
 {% block links %}{% endblock links %}
 
@@ -21,7 +22,7 @@
 {% endblock page_title_actions_items %}
 
 {% block page_body %}
-<div class="row row-deck row-cards">
+<div class="row row-cards">
     {% if client %}
     {% include './top_cards_w_graph.html' with ctx=client chart_id="chart-new-clients" %}
     {% endif %}
@@ -42,7 +43,23 @@
             {% endif %}
         </div>
     </div>
-
+    <div class="col-lg-6">
+        <div class="row row-cards">
+            {% if financial_goal %}
+            {% include './financial_goals.html' with ctx=financial_goal %}
+            {% endif %}
+            {% if contract_warning_table %}
+            <div class="card">
+                <div class="card-header border-0">
+                    <div class="card-title">{% trans "Contract Warning Expiration" %}</div>
+                </div>
+                <div class="table-responsive">
+                    {% render_table contract_warning_table %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
 
 </div>
 {% include './modal.html' %}

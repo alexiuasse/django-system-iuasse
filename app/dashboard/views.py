@@ -1,17 +1,15 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import render
 from django_tables2 import LazyPaginator
 from django_tables2 import RequestConfig
-from django_tables2.export.export import TableExport
 from django.utils.translation import gettext as _
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
-from django.contrib.contenttypes.models import ContentType
-from django.contrib.auth.models import Permission
 from app.base_views import MyPermissionMixin
-from service.utils import webservice_dashboard_progressbars_ctx, domain_dashboard_ctx, contract_dashboard_ctx
+from service.utils import webservice_dashboard_progressbars_ctx, domain_dashboard_ctx, contract_dashboard_ctx, contract_warning_dashboard_queryset
+from service.tables import ContractDashboardTable
 from client.utils import client_dashboard_ctx
-from financial.utils import financial_dashboard_ctx
+from financial.utils import financial_dashboard_ctx, get_month_revenue, get_year_revenue
 
 from .forms import *
 from .models import *
@@ -49,6 +47,7 @@ class DashboardView(LoginRequiredMixin, MyPermissionMixin, View):
             'page_title_icon': self.page_title_icon,
             'form': self.form,
             'show_modal': self.show_modal,
+            'contract_warning_table': self.get_contract_table(),
         }
 
         context.update(webservice_dashboard_progressbars_ctx())
@@ -57,7 +56,43 @@ class DashboardView(LoginRequiredMixin, MyPermissionMixin, View):
         context.update(financial_dashboard_ctx())
         context.update(contract_dashboard_ctx())
 
+        _object = self.get_object()
+        month_revenue = get_month_revenue()
+        year_revenue = get_year_revenue()
+        context.update({
+            'financial_goal': {
+                'month_goal': {
+                    'title': _("Month Goal"),
+                    'subtitle': _("Month Earn"),
+                    'earn': month_revenue,
+                    'goal': _object.month_earn_goal,
+                    'metric': (month_revenue * 100)/_object.month_earn_goal,
+                    'bg': 'bg-blue',
+                },
+                'year_goal': {
+                    'title': _("Year Goal"),
+                    'subtitle': _("Year Earn"),
+                    'earn': year_revenue,
+                    'goal': _object.year_earn_goal,
+                    'metric': (year_revenue * 100)/_object.year_earn_goal,
+                    'bg': 'bg-success',
+                }
+            }
+        })
         return context
+
+    def get_contract_table(self):
+        """Set the contract table"""
+        table = ContractDashboardTable(
+            contract_warning_dashboard_queryset(
+                self.get_object().contract_warning_days
+            )
+        )
+        RequestConfig(self.request, paginate={
+            "per_page": 10,
+            "paginator_class": LazyPaginator
+        }).configure(table)
+        return table
 
     def get_POST_data(self):
         """
