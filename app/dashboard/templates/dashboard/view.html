@@ -51,7 +51,9 @@
             {% if contract_warning_table %}
             <div class="card">
                 <div class="card-header border-0">
-                    <div class="card-title">{% trans "Contract Warning Expiration" %}</div>
+                    <div class="card-title">
+                        {% trans "Contract Warning Expiration In" %} {{object.contract_warning_days}} {% trans "Days" %}
+                    </div>
                 </div>
                 <div class="table-responsive">
                     {% render_table contract_warning_table %}

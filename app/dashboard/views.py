@@ -48,6 +48,7 @@ class DashboardView(LoginRequiredMixin, MyPermissionMixin, View):
             'form': self.form,
             'show_modal': self.show_modal,
             'contract_warning_table': self.get_contract_table(),
+            'object': self.get_object(),
         }
 
         context.update(webservice_dashboard_progressbars_ctx())

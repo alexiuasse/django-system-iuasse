@@ -92,7 +92,7 @@ class ContractDashboardTable(tables.Table):
         per_page = 20
 
         # sequence = ('selection', '...')
-        fields = ['reference', 'start_date', 'expiration', 'end_date']
+        fields = ['id', 'reference', 'start_date', 'expiration', 'end_date']
 
 
 class WebServiceTable(tables.Table):
