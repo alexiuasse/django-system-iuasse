@@ -5,6 +5,7 @@ from app.models import TimeStampMixin
 
 
 class DashboardSettings(TimeStampMixin):
+    """Dashboard settings"""
     contract_warning_days = models.IntegerField(
         _("Contract Warning Days"),
         default=7,

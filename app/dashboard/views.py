@@ -5,6 +5,7 @@ from django.utils.translation import gettext as _
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
+
 from app.base_views import MyPermissionMixin
 from service.utils import webservice_dashboard_progressbars_ctx, domain_dashboard_ctx, contract_dashboard_ctx, contract_warning_dashboard_queryset
 from service.tables import ContractDashboardTable
@@ -51,6 +52,7 @@ class DashboardView(LoginRequiredMixin, MyPermissionMixin, View):
             'object': self.get_object(),
         }
 
+        # Getting all the context needed
         context.update(webservice_dashboard_progressbars_ctx())
         context.update(client_dashboard_ctx())
         context.update(domain_dashboard_ctx())
