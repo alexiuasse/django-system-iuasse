@@ -1,9 +1,7 @@
 from django.http.response import JsonResponse
-from django.db.models import Count
 from django.utils.translation import gettext as _
 from django.contrib.auth.decorators import login_required, permission_required
 from datetime import datetime
-from dateutil.relativedelta import relativedelta
 
 from app.base_views import MyViewCreateUpdateDelete
 
@@ -140,11 +138,7 @@ def webservice_data_chart(request):
 @login_required
 @permission_required('service.view_domain')
 def domain_data_chart(request):
-    """
-    Return a JsonResponse with data to fullfill a chart.
-    The return data consists in a series with all domain divided by the type of service of the current year (divided by month).
-    If a month has nothing, so it will be sent 0.
-    """
+    """Return a JsonResponse with domain data to fullfill a chart."""
     current_date = datetime.today()
     months = [i for i in range(1, 13)]
     data = {
@@ -171,11 +165,7 @@ def domain_data_chart(request):
 @login_required
 @permission_required('service.view_contract')
 def contract_data_chart(request):
-    """
-    Return a JsonResponse with data to fullfill a chart.
-    The return data consists in a series with all contract divided.
-    If a month has nothing, so it will be sent 0.
-    """
+    """Return a JsonResponse with contract data to fullfill a chart."""
     current_date = datetime.today()
     months = [i for i in range(1, 13)]
     data = {

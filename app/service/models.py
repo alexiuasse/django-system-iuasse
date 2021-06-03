@@ -9,9 +9,7 @@ from app.models import TimeStampMixin
 
 
 class TypeOfService(TimeStampMixin):
-    """
-        Model to set the type of service.
-    """
+    """ Model to set the type of service."""
 
     name = models.CharField(verbose_name=_("Name"),
                             max_length=128,
@@ -91,9 +89,7 @@ class WebService(TimeStampMixin):
 
 
 class Domain(TimeStampMixin):
-    """
-        Model to identify a domain (network domain).
-    """
+    """Model to identify a domain (network domain)."""
 
     name = models.CharField(verbose_name=_("Name"),
                             max_length=128)
@@ -180,16 +176,12 @@ class Contract(TimeStampMixin):
         return self.name
 
     def expiration_date(self):
-        """
-            Return the expiration date using a relativedelta.
-        """
+        """Return the expiration date using a relativedelta."""
 
         return self.start_date + relativedelta(months=self.expiration)
 
     def months_passed(self):
-        """
-            Return the months that has passed since start_date until today.
-        """
+        """Return the months that has passed since start_date until today."""
 
         return relativedelta(self.start_date, date.today()).months
 

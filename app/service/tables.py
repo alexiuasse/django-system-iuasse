@@ -71,13 +71,7 @@ class ContractTable(tables.Table):
 
 
 class ContractDashboardTable(tables.Table):
-
-    # selection = CheckBoxColumn(
-    #     accessor='pk',
-    #     attrs={"th__input": {"onclick": "toggle(this)"}},
-    #     orderable=False,
-    #     exclude_from_export=True
-    # )
+    """Contract table used in dashboard."""
 
     reference = Column(accessor="get_reference", verbose_name=_("Reference"))
     expiration = Column(verbose_name=_("Expiration (Month)"))
@@ -90,8 +84,6 @@ class ContractDashboardTable(tables.Table):
         }
         row_attrs = {'class': 'text-muted'}
         per_page = 20
-
-        # sequence = ('selection', '...')
         fields = ['id', 'reference', 'start_date', 'expiration', 'end_date']
 
 
