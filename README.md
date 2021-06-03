@@ -22,7 +22,8 @@ If you use **Windows** the package **mysql-client** might not get installed corr
 2. Make a virtual environment (what i do is ```virtualenv venv```)
 3. Run ```pip install -r requirements.txt```(this will install all libs that it needs to run)
 4. Open a terminal/cmd into app folder (where the manage.py is)
-5. Run ```python manage.py runserver 0.0.0.0:8000```
+5. Run ```python manage.py createsuperuser``` and create a new superuser
+6. Run ```python manage.py runserver 0.0.0.0:8000```
 
 If you wanna a fresh start run, after phase 4:
 
@@ -33,8 +34,6 @@ If you wanna a fresh start run, after phase 4:
 5. Run ```python manage.py migrate```
 6. Run ```python manage.py createsuperuser```
 7. Run ```python manage.py runserver 0.0.0.0:8000```
-
-#### username: admin  password: admin123
 
 ## About Structure
 
