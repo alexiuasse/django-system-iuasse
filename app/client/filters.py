@@ -22,6 +22,9 @@ class ClientFilter(django_filters.FilterSet):
 
     name = django_filters.CharFilter(lookup_expr='icontains')
     email = django_filters.CharFilter(lookup_expr='icontains')
+    # If you wanna use the phone or birthday as filter, uncoment this lines,
+    # but be sure to change the get_GET_data method, because for some reason if
+    # leave empty the mask will be sent.
     # phone = django_filters.CharFilter(lookup_expr='icontains',
     #                                   widget=forms.TextInput(
     #                                       attrs={"data-mask": "(00) 0 0000-0000", "data-mask-visible": True, "placeholder": "(00) 0 0000-0000", "autocomplete": "off"}))

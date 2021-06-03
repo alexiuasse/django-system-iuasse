@@ -47,6 +47,7 @@ class ClientView(MyViewCreateUpdateDelete):
 @login_required
 @permission_required('client.view_client')
 def new_client_data_chart(request):
+    """Return data about clients in format to be put in a chart."""
     current_date = datetime.today()
     months = [i for i in range(1, 13)]
     data = {'series': [{"name": _("Client"), "data": []}],

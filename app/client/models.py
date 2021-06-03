@@ -6,9 +6,7 @@ from app.models import TimeStampMixin
 
 
 class Occupation(TimeStampMixin):
-    """
-        Model to set the Occupation, used to identify a client.
-    """
+    """ Model to set the Occupation, used to identify a client."""
 
     name = models.CharField(verbose_name=_("Name"),
                             max_length=128,
@@ -20,9 +18,7 @@ class Occupation(TimeStampMixin):
 
 
 class Client(TimeStampMixin):
-    """
-        Model to specify a client.
-    """
+    """ Model to specify a client."""
 
     name = models.CharField(verbose_name=_("Name"),
                             max_length=128)
