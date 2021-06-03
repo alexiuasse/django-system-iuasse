@@ -1,6 +1,14 @@
 # Django System Iuasse
 
-Django Iuasse System is a system that aims to run a small business.
+Django Iuasse System is a system that aims to run a small tech business, that make web services (like one page, web system, application mobile with backend and so on).
+
+#### Few Considerations
+
+1. My main language is not english, so i am 100% sure that has some language errors.
+2. Some models name are not really well designed (but it works).
+3. The default localization are only made from english to pt_BR.
+4. There are always some improvement to be made.
+5. Use this project to learn more about Django, i am not an expert but i put everything that i know in this project. (It's ain't much, but it's honest work.)
 
 ## Quick Tutorial
 
@@ -26,12 +34,7 @@ If you wanna a fresh start run, after phase 4:
 6. Run ```python manage.py createsuperuser```
 7. Run ```python manage.py runserver 0.0.0.0:8000```
 
-#### username: admin
-#### password: admin123
-
-## What it provides
-
-It provides a dashboard that contains statistics about the services that the company has, allows an easy way to account for gains and losses with the help of charts and other things.
+#### username: admin  password: admin123
 
 ## About Structure
 
