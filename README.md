@@ -53,3 +53,10 @@ https://docs.djangoproject.com/en/3.2/topics/i18n/translation/
 ## License
 
 This project is under MIT License.
+
+## Future Work
+
+1. Make details page for the: WebService (contract, domain, financial release), Client (with service, contract, financial release and etc related to it)
+2. Make a Balance Sheet on the financial app (showing assets, liability, status of payments and so on)
+3. Add in dashboard some of the financial release (like the ones that is waiting for payment)
+4. Proof test the concept (put it in production to see if the concepts works fine)
