@@ -18,41 +18,6 @@ class Occupation(TimeStampMixin):
     def __str__(self) -> str:
         return self.name
 
-    def get_absolute_url(self):
-        return reverse_lazy(f'{self._meta.app_label}:test_form')
-
-    def get_change_url(self):
-        return reverse_lazy(f'{self._meta.app_label}:{self._meta.model_name}:change', kwargs={'pk': self.pk})
-
-    def get_delete_url(self):
-        return reverse_lazy(f'{self._meta.app_label}:{self._meta.model_name}:delete', kwargs={'pk': self.pk})
-
-    @staticmethod
-    def get_exclude_fields():
-        """
-            Fields of the current model that is marked to get excluded from visualization.
-        """
-
-        return ['id', 'history']
-
-    def get_add_fields(self):
-        """
-            Custom fields to be added for visualization. Need to be a dict with {'name': content}
-        """
-
-        return {}
-
-    def get_dict_data(self):
-        """
-            This method automatically gathers all the fields in the current model and returns them as a dictionary, used mainly to build a layout.
-        """
-
-        exclude = self.get_exclude_fields()
-        data = dict([(field.verbose_name, getattr(self, field.name))
-                    for field in self._meta.fields if field.name not in exclude])
-        data.update(self.get_add_fields())
-        return data
-
 
 class Client(TimeStampMixin):
     """
@@ -90,13 +55,7 @@ class Client(TimeStampMixin):
         return self.name
 
     def get_absolute_url(self):
-        return reverse_lazy(f'{self._meta.app_label}:view')
-
-    def get_change_url(self):
-        return reverse_lazy(f'{self._meta.app_label}:{self._meta.model_name}:change', kwargs={'pk': self.pk})
-
-    def get_delete_url(self):
-        return reverse_lazy(f'{self._meta.app_label}:{self._meta.model_name}:delete', kwargs={'pk': self.pk})
+        return reverse_lazy(f'{self._meta.app_label}:{self._meta.model_name}:details')
 
     @staticmethod
     def get_exclude_fields():
@@ -104,7 +63,7 @@ class Client(TimeStampMixin):
             Fields of the current model that is marked to get excluded from visualization.
         """
 
-        return ['id', 'history']
+        return []
 
     def get_add_fields(self):
         """

@@ -57,13 +57,7 @@ class WebService(TimeStampMixin):
         return "{} - {}".format(self.client, self.type_of_service)
 
     def get_absolute_url(self):
-        return reverse_lazy(f'{self._meta.app_label}:{self._meta.model_name}:view')
-
-    def get_change_url(self):
-        return reverse_lazy(f'{self._meta.app_label}:{self._meta.model_name}:change', kwargs={'pk': self.pk})
-
-    def get_delete_url(self):
-        return reverse_lazy(f'{self._meta.app_label}:{self._meta.model_name}:delete', kwargs={'pk': self.pk})
+        return reverse_lazy(f'{self._meta.app_label}:{self._meta.model_name}:details')
 
     @property
     def contracts(self):
@@ -75,7 +69,7 @@ class WebService(TimeStampMixin):
             Fields of the current model that is marked to get excluded from visualization.
         """
 
-        return ['id', 'history']
+        return []
 
     def get_add_fields(self):
         """
@@ -118,13 +112,7 @@ class Domain(TimeStampMixin):
         return "{}".format(self.name)
 
     def get_absolute_url(self):
-        return reverse_lazy(f'{self._meta.app_label}:{self._meta.model_name}:view')
-
-    def get_change_url(self):
-        return reverse_lazy(f'{self._meta.app_label}:{self._meta.model_name}:change', kwargs={'pk': self.pk})
-
-    def get_delete_url(self):
-        return reverse_lazy(f'{self._meta.app_label}:{self._meta.model_name}:delete', kwargs={'pk': self.pk})
+        return reverse_lazy(f'{self._meta.app_label}:{self._meta.model_name}:details')
 
     @ staticmethod
     def get_exclude_fields():
@@ -132,7 +120,7 @@ class Domain(TimeStampMixin):
             Fields of the current model that is marked to get excluded from visualization.
         """
 
-        return ['id', 'history']
+        return []
 
     def get_add_fields(self):
         """
@@ -227,13 +215,7 @@ class Contract(TimeStampMixin):
         return _("None")
 
     def get_absolute_url(self):
-        return reverse_lazy(f'{self._meta.app_label}:{self._meta.model_name}:view')
-
-    def get_change_url(self):
-        return reverse_lazy(f'{self._meta.app_label}:{self._meta.model_name}:change', kwargs={'pk': self.pk})
-
-    def get_delete_url(self):
-        return reverse_lazy(f'{self._meta.app_label}:{self._meta.model_name}:delete', kwargs={'pk': self.pk})
+        return reverse_lazy(f'{self._meta.app_label}:{self._meta.model_name}:details')
 
     @ staticmethod
     def get_exclude_fields():
@@ -241,7 +223,7 @@ class Contract(TimeStampMixin):
             Fields of the current model that is marked to get excluded from visualization.
         """
 
-        return ['id', 'history']
+        return []
 
     def get_add_fields(self):
         """

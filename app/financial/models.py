@@ -88,13 +88,7 @@ class FinancialRelease(TimeStampMixin):
         return "{} - {}".format(self.total_value, self.type_of_payment)
 
     def get_absolute_url(self):
-        return reverse_lazy(f'{self._meta.app_label}:{self._meta.model_name}:view')
-
-    def get_change_url(self):
-        return reverse_lazy(f'{self._meta.app_label}:{self._meta.model_name}:change', kwargs={'pk': self.pk})
-
-    def get_delete_url(self):
-        return reverse_lazy(f'{self._meta.app_label}:{self._meta.model_name}:delete', kwargs={'pk': self.pk})
+        return reverse_lazy(f'{self._meta.app_label}:{self._meta.model_name}:details')
 
     @staticmethod
     def get_exclude_fields():
@@ -102,7 +96,7 @@ class FinancialRelease(TimeStampMixin):
             Fields of the current model that is marked to get excluded from visualization.
         """
 
-        return ['id', 'history']
+        return []
 
     def get_add_fields(self):
         """
