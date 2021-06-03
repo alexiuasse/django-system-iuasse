@@ -22,7 +22,7 @@
 {% endblock page_title_actions_items %}
 
 {% block page_body %}
-<div class="row row-cards">
+<div class="row row-deck row-cards">
     {% if client %}
     {% include './top_cards_w_graph.html' with ctx=client chart_id="chart-new-clients" %}
     {% endif %}
