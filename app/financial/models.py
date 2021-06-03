@@ -8,9 +8,7 @@ from app.models import TimeStampMixin
 
 
 class PaymentStatus(TimeStampMixin):
-    """
-        Model to set the payment status.
-    """
+    """ Model to set the payment status."""
 
     name = models.CharField(verbose_name=_("Name"),
                             max_length=128,
@@ -24,9 +22,7 @@ class PaymentStatus(TimeStampMixin):
 
 
 class TypeOfPayment(TimeStampMixin):
-    """
-        Model to set the type of payment allowed.
-    """
+    """Model to set the type of payment allowed."""
 
     name = models.CharField(verbose_name=_("Name"),
                             max_length=128,
@@ -59,9 +55,7 @@ class CostCenter(TimeStampMixin):
 
 
 class FinancialRelease(TimeStampMixin):
-    """
-        Model for financial release.
-    """
+    """Model for financial release."""
 
     total_value = models.DecimalField(verbose_name=_("Total Value"),
                                       max_digits=settings.DEFAULT_MAX_DIGITS,
