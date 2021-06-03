@@ -161,10 +161,13 @@ FOOTER_COPYRIGHT = "Copyright © 2021"
 CONTACT_EMAIL = "alexiuasse@gmail.com"
 SOURCE_CODE_LINK = "https://github.com/alexiuasse/django-system-iuasse"
 
+# Change here for the symbol money you wish
 MONEY_SYMBOL = "R$"
+# This is used in the charts legends, change for the language you wish
 CHART_MONTHS_LABELS = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai',
                        'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
 
+# Used for in models DecimalField and in the template tag currency
 DEFAULT_DECIMAL_PLACES = 2
 DEFAULT_MAX_DIGITS = 11
 

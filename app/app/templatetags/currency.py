@@ -8,6 +8,7 @@ register = template.Library()
 @register.filter
 def currency(number, decimal_places=settings.DEFAULT_DECIMAL_PLACES,
              decimal=','):
+    """Convert a number to a currency format, change in settings the values."""
     result = intcomma(number)
     result += decimal if decimal not in result else ''
     while len(result.split(decimal)[1]) != decimal_places:

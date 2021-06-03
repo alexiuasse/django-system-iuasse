@@ -57,9 +57,7 @@ class MyPermissionMixin():
 
 
 class MyViewCreateUpdateDelete(LoginRequiredMixin, MyPermissionMixin, View):
-    """
-    This is a custom view that can view, add, edit and delete a model.
-    """
+    """This is a custom view that can view, add, edit and delete a model."""
 
     model = None
     form = None
@@ -79,6 +77,7 @@ class MyViewCreateUpdateDelete(LoginRequiredMixin, MyPermissionMixin, View):
     export_formats = ['csv', 'xls', 'xlsx']
 
     def get_context_data(self):
+        """Return the context data, also check for fields."""
         if self.template_name == None:
             raise ImproperlyConfigured(
                 '{0} is missing the template_name attribute.'.format(
@@ -104,9 +103,6 @@ class MyViewCreateUpdateDelete(LoginRequiredMixin, MyPermissionMixin, View):
                 '{0} is missing the table_class attribute.'.format(
                     self.__class__.__name__)
             )
-
-        # if self.form == None:
-        #     self.reset_form()
 
         context = {
             'page_title': self.page_title,
